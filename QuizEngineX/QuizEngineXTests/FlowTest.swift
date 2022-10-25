@@ -11,9 +11,10 @@ import XCTest
 
 class FlowTest: XCTestCase {
     
+    let router = RouterSpy()
+    
     func test_start_withNoQuestions_doesNotRouteToQuestions() {
-        let router = RouterSpy()
-        let sut = Flow(questions: [], router: router)
+        let sut = makeSUT(questions: [])
         
         sut.start()
         XCTAssertTrue(router.routedQuestions.isEmpty)
@@ -21,58 +22,106 @@ class FlowTest: XCTestCase {
     }
     
     func test_start_withOneQuestions_routesToCorrectQuestions() {
-        let router = RouterSpy()
-        let sut = Flow(questions: ["Q1"], router: router)
+        let sut = makeSUT(questions: ["Q1"])
 
         sut.start()
         XCTAssertEqual(router.routedQuestions, ["Q1"])
     }
     
     func test_start_withOneQuestions_routesToCorrectQuestions2() {
-        let router = RouterSpy()
-        let sut = Flow(questions: ["Q2"], router: router)
+        let sut = makeSUT(questions: ["Q2"])
 
         sut.start()
         XCTAssertEqual(router.routedQuestions, ["Q2"])
     }
     
     func test_start_withTwoQuestions_routesToFirstQuestion() {
-        let router = RouterSpy()
-        let sut = Flow(questions: ["Q1", "Q2"], router: router)
+        let sut = makeSUT(questions: ["Q1", "Q2"])
 
         sut.start()
         XCTAssertEqual(router.routedQuestions, ["Q1"])
     }
     
+    func test_startAndAnwerFirstQuestion_withTwoQuestions_doesntRuleToResult() {
+        let sut = makeSUT(questions: ["Q1", "Q2"])
+
+        sut.start()
+        router.answerCallback("A1")
+        XCTAssertNil(router.routedResult)
+    }
+    
+    func test_start_withOneQuestion_routesToResult() {
+        let sut = makeSUT(questions: ["Q1"])
+
+        sut.start()
+        XCTAssertNil(router.routedResult)
+    }
+    
     func test_startTwice_withTwoQuestions_routesToFirstQuestionTwice() {
-        let router = RouterSpy()
-        let sut = Flow(questions: ["Q1", "Q2"], router: router)
+        let sut = makeSUT(questions: ["Q1", "Q2"])
 
         sut.start()
         sut.start()
         XCTAssertEqual(router.routedQuestions, ["Q1", "Q1"])
     }
     
-    func test_start_withTwoQuestionsAndAnswerFirstQuestion_routesToSecondQuestion() {
-        let router = RouterSpy()
-        let sut = Flow(questions: ["Q1", "Q2"], router: router)
+    func test_startAndAwserFirstAndSecondQuestion_routesToSecondAndThirdQuestion() {
+        let sut = makeSUT(questions: ["Q1", "Q2", "Q3"])
         
 
         sut.start()
         router.answerCallback("A1")
+        router.answerCallback("A2")
         
-        XCTAssertEqual(router.routedQuestions, ["Q1","Q2"])
+        XCTAssertEqual(router.routedQuestions, ["Q1","Q2", "Q3"])
+    }
+    
+    func test_startAndAnswerFirstQuestion_withOneQuestion_doesNotRouteToAnotherQuestion() {
+        let sut = makeSUT(questions: ["Q1"])
+
+        sut.start()
+        router.answerCallback("A1")
+        
+        XCTAssertEqual(router.routedQuestions, ["Q1"])
+    }
+    
+    func test_start_withNoQuestions_routeToResult() {
+        let sut = makeSUT(questions: [])
+        
+        sut.start()
+        XCTAssertEqual(router.routedResult!, [:])
+    }
+    
+    func test_startAnswerFirstAndSecondQuestions_withTwoQuestions_routesToResult() {
+        let sut = makeSUT(questions: ["Q1", "Q2"])
+        
+        sut.start()
+        router.answerCallback("A1")
+        router.answerCallback("A2")
+        XCTAssertEqual(router.routedResult!, ["Q1": "A1", "Q2": "A2"])
+    }
+    
+    // MARK: - Helper
+    
+    // lil factory helper func
+    func makeSUT(questions: [String]) -> Flow {
+        Flow(questions: questions, router: router)
     }
     
     //spy aka Fake data
     // This Fake should be simple
     class RouterSpy: Router {
         var routedQuestions: [String] = []
+        var routedResult: [String: String]? = nil
         var answerCallback: ((String) -> (Void)) = { _ in }
         
         func routeTo(question: String, answerCallback: @escaping (String) -> Void) {
             routedQuestions.append(question)
             self.answerCallback = answerCallback
+        }
+        
+        func routeTo(result: [String : String]) {
+            routedResult = result
         }
     }
     

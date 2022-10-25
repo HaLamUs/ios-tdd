@@ -5,6 +5,8 @@
 ## User settings
 xcuserdata/
 
+.DS_Store
+
 QuizEngineX/QuizEngineX.xcodeproj/project.xcworkspace/xcuserdata/
 
 ## compatibility with Xcode 8 and earlier (ignoring not required starting Xcode 9)
