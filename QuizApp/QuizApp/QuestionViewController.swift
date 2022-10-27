@@ -17,9 +17,9 @@ class QuestionViewController: UIViewController, UITableViewDataSource, UITableVi
     private var options = [String]()
     private let reuseIndentifier = "Cell"
     
-    private var selection: ((String) -> Void)? = nil
+    private var selection: (([String]) -> Void)? = nil
     
-    convenience init(question: String, options: [String], selection: @escaping (String) -> Void) {
+    convenience init(question: String, options: [String], selection: @escaping ([String]) -> Void) {
         self.init()
         self.question = question
         self.options = options
@@ -37,7 +37,23 @@ class QuestionViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selection?(options[indexPath.row])
+//        selection?([options[indexPath.row]])
+//        selection?(tableView.indexPathsForSelectedRows!.map { options[$0.row] })
+        selection?(selectOption(in: tableView))
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        if tableView.isMultipleTouchEnabled {
+            
+            selection?(selectOption(in: tableView))
+        }
+    }
+    
+    private func selectOption(in tableView: UITableView) ->[String] {
+        guard let index = tableView.indexPathsForSelectedRows else {
+            return []
+        }
+        return index.map { options[$0.row] }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
