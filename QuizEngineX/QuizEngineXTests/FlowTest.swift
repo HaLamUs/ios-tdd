@@ -108,6 +108,10 @@ class FlowTest: XCTestCase {
         Flow(questions: questions, router: router)
     }
     
+    func test_viewDidLoad_withCorrectAnswer_renderCell() {
+        
+    }
+    
     //spy aka Fake data
     // This Fake should be simple
     class RouterSpy: Router {
