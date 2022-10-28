@@ -21,6 +21,8 @@
 		B8FB600C290C290E00696C58 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FB600B290C290E00696C58 /* ResultViewController.swift */; };
 		B8FB600E290C29FF00696C58 /* ResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8FB600D290C29FF00696C58 /* ResultViewController.xib */; };
 		B8FB6010290C3FD700696C58 /* TableViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FB600F290C3FD600696C58 /* TableViewHelper.swift */; };
+		B8FB6012290C428A00696C58 /* CorrectAnswerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8FB6011290C428A00696C58 /* CorrectAnswerCell.xib */; };
+		B8FB6014290C46CA00696C58 /* WrongAnswerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8FB6013290C46CA00696C58 /* WrongAnswerCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +61,8 @@
 		B8FB600B290C290E00696C58 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		B8FB600D290C29FF00696C58 /* ResultViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultViewController.xib; sourceTree = "<group>"; };
 		B8FB600F290C3FD600696C58 /* TableViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewHelper.swift; sourceTree = "<group>"; };
+		B8FB6011290C428A00696C58 /* CorrectAnswerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CorrectAnswerCell.xib; sourceTree = "<group>"; };
+		B8FB6013290C46CA00696C58 /* WrongAnswerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WrongAnswerCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +119,8 @@
 				B89AD4E1290AEB2400AF9D3A /* LaunchScreen.storyboard */,
 				B89AD4E4290AEB2400AF9D3A /* Info.plist */,
 				B8CAABC7290AED8100DC2829 /* QuestionViewController.swift */,
+				B8FB6013290C46CA00696C58 /* WrongAnswerCell.xib */,
+				B8FB6011290C428A00696C58 /* CorrectAnswerCell.xib */,
 				B8CAABC9290AEE6D00DC2829 /* QuestionViewController.xib */,
 				B8FB600B290C290E00696C58 /* ResultViewController.swift */,
 				B8FB600D290C29FF00696C58 /* ResultViewController.xib */,
@@ -247,8 +253,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				B89AD4E3290AEB2400AF9D3A /* LaunchScreen.storyboard in Resources */,
+				B8FB6014290C46CA00696C58 /* WrongAnswerCell.xib in Resources */,
 				B89AD4E0290AEB2400AF9D3A /* Assets.xcassets in Resources */,
 				B8CAABCA290AEE6D00DC2829 /* QuestionViewController.xib in Resources */,
+				B8FB6012290C428A00696C58 /* CorrectAnswerCell.xib in Resources */,
 				B8FB600E290C29FF00696C58 /* ResultViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
