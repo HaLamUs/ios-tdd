@@ -104,7 +104,7 @@ class FlowTest: XCTestCase {
     // MARK: - Helper
     
     // lil factory helper func
-    func makeSUT(questions: [String]) -> Flow {
+    func makeSUT(questions: [String]) -> Flow<String, String, RouterSpy> {
         Flow(questions: questions, router: router)
     }
     

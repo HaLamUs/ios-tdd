@@ -11,16 +11,19 @@ import Foundation
  It's a contract that change depend on platform
  */
 protocol Router {
-    func routeTo(question: String, answerCallback: @escaping (String) -> Void)
-    func routeTo(result: [String: String])
+    associatedtype Answer
+    associatedtype Question: Hashable // why because question used as a key in dict 
+    
+    func routeTo(question: Question, answerCallback: @escaping (Answer) -> Void)
+    func routeTo(result: [Question: Answer])
 }
 
-class Flow {
-    private let router: Router
-    private let questions: [String]
-    private var result: [String: String] = [:]
+class Flow<Question: Hashable, Answer, R: Router> where R.Answer == Answer, R.Question == Question {
+    private let router: R
+    private let questions: [Question]
+    private var result: [Question: Answer] = [:]
     
-    init(questions: [String], router: Router) {
+    init(questions: [Question], router: R) {
         self.questions = questions
         self.router = router
     }
@@ -34,7 +37,7 @@ class Flow {
         
     }
     
-    private func nextCallBack(_ question: String) -> (String) -> Void {
+    private func nextCallBack(_ question: Question) -> (Answer) -> Void {
 //        {
 //            [weak self] answer in
 //            if let strongSelf = self {
@@ -44,7 +47,7 @@ class Flow {
         {[weak self] in self?.moveNextQuestion(question, $0)}
     }
     
-    private func moveNextQuestion(_ question: String, _ answer: String) {
+    private func moveNextQuestion(_ question: Question, _ answer: Answer) {
         if let currentQuestionIndex = questions.index(of: question) {
             result[question] = answer
             let nextQuestionIndex = currentQuestionIndex + 1
