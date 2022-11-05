@@ -12,9 +12,11 @@ class QuestionViewController: UIViewController, UITableViewDataSource, UITableVi
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var headerLabel: UILabel!
-    
-    private var question: String = ""
-    private var options = [String]()
+
+    // we expose (set) for tesing
+    // fix, test iosVCFactory in the same test with questionVCTest
+    private(set) var question: String = ""
+    private(set) var options = [String]()
     private let reuseIndentifier = "Cell"
     
     private var selection: (([String]) -> Void)? = nil

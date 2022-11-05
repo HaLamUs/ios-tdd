@@ -102,7 +102,7 @@ class QuestionViewControllerTest: XCTestCase {
         XCTAssertEqual(receivedAnwer, ["A1"])
 
         sut.tableView.deselect(at: 0)
-        XCTAssertEqual(receivedAnwer, [])
+        XCTAssertEqual(receivedAnwer, ["A1"])
 
     }
     
@@ -123,9 +123,15 @@ class QuestionViewControllerTest: XCTestCase {
     
     
     // MARK: Helper
-    func makeSUT(question: String = "", options: [String] = [], selection: @escaping ([String]) -> Void = { _ in })
+    func makeSUT(question: String = "",
+                 options: [String] = [],
+                 selection: @escaping ([String]) -> Void = { _ in })
     -> QuestionViewController {
-        let sut = QuestionViewController(question: question, options: options, selection: selection)
+        let questionType = Question.singleAnswer("Q1")
+        let factory = iOSViewControllerFactory(options: [Question.singleAnswer("Q1"): options])
+        
+        let sut = factory.questionViewController(for: questionType, answerCallback: selection) as! QuestionViewController
+//        let sut = QuestionViewController(question: question, options: options, selection: selection)
         _ = sut.view
         return sut
     }
