@@ -126,7 +126,7 @@ class QuestionViewControllerTest: XCTestCase {
     func makeSUT(question: String = "",
                  options: [String] = [],
                  selection: @escaping ([String]) -> Void = { _ in })
-    -> QuestionViewController {
+    -> QuestionViewController { 
         let questionType = Question.singleAnswer("Q1")
         let factory = iOSViewControllerFactory(options: [Question.singleAnswer("Q1"): options])
         
