@@ -15,5 +15,5 @@ public protocol Router {
     associatedtype Question: Hashable // why because question used as a key in dict
     
     func routeTo(question: Question, answerCallback: @escaping (Answer) -> Void)
-    func routeTo(result: Result<Question, Answer>)
+    func routeTo(result: ResultX<Question, Answer>)
 }

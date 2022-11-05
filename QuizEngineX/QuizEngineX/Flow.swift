@@ -52,8 +52,8 @@ class Flow<Question: Hashable, Answer, R: Router> where R.Answer == Answer, R.Qu
         }
     }
     
-    private func result() -> Result<Question, Answer> {
-        Result(answers: answers, score: scoring(answers))
+    private func result() -> ResultX<Question, Answer> {
+        ResultX(answers: answers, score: scoring(answers))
     }
     
 }
