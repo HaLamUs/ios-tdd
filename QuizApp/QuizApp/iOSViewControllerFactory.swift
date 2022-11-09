@@ -10,10 +10,12 @@ import QuizEngineX
 
 class iOSViewControllerFactory: ViewControllerFactory {
 
+    private let questions: [Question<String>]
     private let options: [Question<String>: [String]]
     
-    init(options: [Question<String>: [String]]) {
+    init(for questions: [Question<String>], options: [Question<String>: [String]]) {
         self.options = options
+        self.questions = questions
     }
     
     func resultViewController(for result: ResultX<Question<String>, [String]>) -> UIViewController {
@@ -30,17 +32,24 @@ class iOSViewControllerFactory: ViewControllerFactory {
     private func questionViewController(for question: Question<String>, option: [String], answerCallback: @escaping ([String]) -> Void) -> UIViewController {
         switch question {
             case .singleAnswer(let value):
-                return QuestionViewController(question: value,
-                                              options: option,
-                                              selection: answerCallback)
+            return questionViewController(for: question, value: value, option: option, answerCallback: answerCallback)
         case .multipleAnswer(let value):
-            let controller = QuestionViewController(question: value,
-                                          options: option,
-                                          selection: answerCallback)
+            let controller = questionViewController(for: question, value: value, option: option, answerCallback: answerCallback)
             _ = controller.view
             controller.tableView.allowsMultipleSelection = true
             return controller
         }
-
     }
+    
+    private func questionViewController(for question: Question<String>,
+                                        value: String,
+                                        option: [String], answerCallback: @escaping ([String]) -> Void) -> QuestionViewController {
+        let presenter = QuestionsPresenter(questions: questions, question: question)
+        let controller = QuestionViewController(question: value,
+                                                options: option,
+                                                selection: answerCallback)
+        controller.title = presenter.title
+        return controller
+    }
+    
 }
