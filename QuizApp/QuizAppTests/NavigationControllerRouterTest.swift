@@ -14,7 +14,7 @@ class NavigationControllerRouterTest: XCTestCase {
     let navigationController = NonAnimatedNavigationViewController()
     let factory = ViewControllerFactoryStub()
     //ONly in callback you can ref to factory and navi
-    lazy var sut:NavigationControllerRouter = {
+    lazy var sut: NavigationControllerRouter = {
         return NavigationControllerRouter(self.navigationController, factory: self.factory)
     }()
     
@@ -95,11 +95,3 @@ class NavigationControllerRouterTest: XCTestCase {
 }
  
 
-// we dont want public we just want test
-extension ResultX: Hashable {
-    public static func == (lhs: ResultX<Question, Answer>, rhs: ResultX<Question, Answer>) -> Bool {
-        lhs.score == rhs.score
-    }
-    
-    public var hashValue: Int { 1 }
-}
