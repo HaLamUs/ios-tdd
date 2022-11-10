@@ -43,10 +43,7 @@ class iOSViewControllerFactoryTest: XCTestCase {
     
     func test_questionViewController_singleAnswer_createViewControllerWithOptionsWithSingleSelection() {
         // some point we need data provider which provides option
-        
-        let controller = makeQuestionController()
-        _ = controller.view
-        XCTAssertFalse(controller.tableView.allowsMultipleSelection)
+        XCTAssertFalse(makeQuestionController().allowsMultipleSelection)
     }
     
     func test_questionViewController_multipleAnswer_createViewControllerWithTile() {
@@ -64,10 +61,8 @@ class iOSViewControllerFactoryTest: XCTestCase {
         XCTAssertEqual(controller.options, options)
     }
     
-    func test_questionViewController_multipleAnswers_createViewControllerWithOptionsWithSingleSelection() {
-        let controller = makeQuestionController(question: multipleAnswerQuestion)
-        _ = controller.view
-        XCTAssertTrue(controller.tableView.allowsMultipleSelection)
+    func test_questionViewController_multipleAnswers_createViewControllerWithOptionsWithSingleSelection() { 
+        XCTAssertTrue(makeQuestionController(question: multipleAnswerQuestion).allowsMultipleSelection)
     }
     
     

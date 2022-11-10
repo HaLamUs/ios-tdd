@@ -16,15 +16,20 @@ class QuestionViewController: UIViewController, UITableViewDataSource, UITableVi
     // we expose (set) for tesing
     // fix, test iosVCFactory in the same test with questionVCTest
     private(set) var question: String = ""
+    private(set) var allowsMultipleSelection: Bool = false
     private(set) var options = [String]()
     private let reuseIndentifier = "Cell"
     
     private var selection: (([String]) -> Void)? = nil
     
-    convenience init(question: String, options: [String], selection: @escaping ([String]) -> Void) {
+    convenience init(question: String,
+                     options: [String],
+                     allowsMultipleSelection: Bool,
+                     selection: @escaping ([String]) -> Void) {
         self.init()
         self.question = question
         self.options = options
+        self.allowsMultipleSelection = allowsMultipleSelection
         self.selection = selection
     }
     
@@ -35,6 +40,7 @@ class QuestionViewController: UIViewController, UITableViewDataSource, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.allowsMultipleSelection = allowsMultipleSelection
         headerLabel.text = question
     }
     

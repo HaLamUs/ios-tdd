@@ -62,9 +62,17 @@ class QuestionViewControllerTest: XCTestCase {
 //
 //    }
     
+    func test_viewDidLoad_withSingleSelection_configuresTableView() {
+        XCTAssertFalse(makeSUT(options: ["A1", "A2"], allowsMultipleSelection: false).tableView.allowsMultipleSelection)
+    }
+    
+    func test_viewDidLoad_withMultipleSelection_configuresTableView() {
+        XCTAssertTrue(makeSUT(options: ["A1", "A2"], allowsMultipleSelection: true).tableView.allowsMultipleSelection)
+    }
+    
     func test_optionSelected_WithTwoOptions_notifiesDelegateWhenSelectionChanges() {
         var receivedAnwer = [String]()
-        let sut = makeSUT(options: ["A1", "A2"]) {
+        let sut = makeSUT(options: ["A1", "A2"], allowsMultipleSelection: false) {
             receivedAnwer = $0
         }
     
@@ -78,11 +86,10 @@ class QuestionViewControllerTest: XCTestCase {
     
     func test_optionSelected_WithMultipleSelectionEnable_notifiesDelegateWhenSelection() {
         var receivedAnwer = [String]()
-        let sut = makeSUT(options: ["A1", "A2"]) {
+        let sut = makeSUT(options: ["A1", "A2"], allowsMultipleSelection: true) {
             receivedAnwer = $0
         }
 
-        sut.tableView.allowsMultipleSelection = true
         sut.tableView.select(at: 0)
         XCTAssertEqual(receivedAnwer, ["A1"])
 
@@ -93,11 +100,10 @@ class QuestionViewControllerTest: XCTestCase {
     
     func test_optionDeselected_WithMultipleSelectionEnable_notifiesDelegate() {
         var receivedAnwer = [String]()
-        let sut = makeSUT(options: ["A1", "A2"]) {
+        let sut = makeSUT(options: ["A1", "A2"], allowsMultipleSelection: true) {
             receivedAnwer = $0
         }
 
-        sut.tableView.allowsMultipleSelection = true
         sut.tableView.select(at: 0)
         XCTAssertEqual(receivedAnwer, ["A1"])
 
@@ -109,7 +115,7 @@ class QuestionViewControllerTest: XCTestCase {
     
     func test_optionDeselected_withSingleSelection_doesNotNotifiesDelegateWithEmptySelection() {
         var callbackCount = 0
-        let sut = makeSUT(options: ["A1", "A2"]) {_ in 
+        let sut = makeSUT(options: ["A1", "A2"], allowsMultipleSelection: false) {_ in
             callbackCount += 1
         }
 
@@ -125,14 +131,19 @@ class QuestionViewControllerTest: XCTestCase {
     // MARK: Helper
     func makeSUT(question: String = "",
                  options: [String] = [],
+                 allowsMultipleSelection: Bool = false,
                  selection: @escaping ([String]) -> Void = { _ in })
-    -> QuestionViewController { 
-        let questionType = Question.singleAnswer("Q1")
-        let factory = iOSViewControllerFactory(for: [], options: [Question.singleAnswer("Q1"): options])
-        
-        let sut = factory.questionViewController(for: questionType, answerCallback: selection) as! QuestionViewController
-//        let sut = QuestionViewController(question: question, options: options, selection: selection)
+    -> QuestionViewController {
+//        let questionType = Question.singleAnswer("Q1")
+//        let factory = iOSViewControllerFactory(for: [], options: [Question.singleAnswer("Q1"): options])
+//
+//        let sut = factory.questionViewController(for: questionType, answerCallback: selection) as! QuestionViewController
+        let sut = QuestionViewController(question: question,
+                                         options: options,
+                                         allowsMultipleSelection: allowsMultipleSelection,
+                                         selection: selection)
         _ = sut.view
+//        sut.tableView.allowsMultipleSelection = allowsMultipleSelection
         return sut
     }
     
