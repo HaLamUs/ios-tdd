@@ -12,14 +12,15 @@ class iOSViewControllerFactory: ViewControllerFactory {
 
     private let questions: [Question<String>]
     private let options: [Question<String>: [String]]
+    private let correctAnswers: [Question<String>: [String]]
     
-    init(for questions: [Question<String>], options: [Question<String>: [String]]) {
+    init(for questions: [Question<String>],
+         options: [Question<String>: [String]],
+         correctAnswers: [Question<String>: [String]]
+    ) {
         self.options = options
         self.questions = questions
-    }
-    
-    func resultViewController(for result: ResultX<Question<String>, [String]>) -> UIViewController {
-        UIViewController()
+        self.correctAnswers = correctAnswers
     }
     
     func questionViewController(for question: Question<String>, answerCallback: @escaping ([String]) -> Void) -> UIViewController {
@@ -48,6 +49,11 @@ class iOSViewControllerFactory: ViewControllerFactory {
                                                 selection: answerCallback)
         controller.title = presenter.title
         return controller
+    }
+    
+    func resultViewController(for result: ResultX<Question<String>, [String]>) -> UIViewController {
+        let presenter = ResultsPresenter(result: result, question: questions, correctAnswers: correctAnswers)
+        return ResultViewController(summary: presenter.summary, anwers: presenter.presentableAnswer)
     }
     
 }

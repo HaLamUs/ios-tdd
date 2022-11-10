@@ -9,8 +9,8 @@ import Foundation
 import UIKit
 
 class ResultViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    private var summary: String = ""
-    private var anwsers = [PresentableAnswer]()
+    private(set) var summary: String = ""
+    private(set) var anwsers = [PresentableAnswer]()
     @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
