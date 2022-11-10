@@ -30,7 +30,6 @@
 		B8EDDC3A291421D300756491 /* NavigationControllerRouterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8EDDC39291421D300756491 /* NavigationControllerRouterTest.swift */; };
 		B8EDDC3C2914230C00756491 /* NavigationControllerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8EDDC3B2914230C00756491 /* NavigationControllerRouter.swift */; };
 		B8EDDC3E2914386100756491 /* QuestionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8EDDC3D2914386100756491 /* QuestionTest.swift */; };
-		B8EDDC4029143C3100756491 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8EDDC3F29143C3100756491 /* Question.swift */; };
 		B8FB600A290C284100696C58 /* ResultViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FB6009290C284100696C58 /* ResultViewControllerTest.swift */; };
 		B8FB600C290C290E00696C58 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FB600B290C290E00696C58 /* ResultViewController.swift */; };
 		B8FB600E290C29FF00696C58 /* ResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8FB600D290C29FF00696C58 /* ResultViewController.xib */; };
@@ -101,7 +100,6 @@
 		B8EDDC39291421D300756491 /* NavigationControllerRouterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationControllerRouterTest.swift; sourceTree = "<group>"; };
 		B8EDDC3B2914230C00756491 /* NavigationControllerRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationControllerRouter.swift; sourceTree = "<group>"; };
 		B8EDDC3D2914386100756491 /* QuestionTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionTest.swift; sourceTree = "<group>"; };
-		B8EDDC3F29143C3100756491 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		B8FB6009290C284100696C58 /* ResultViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewControllerTest.swift; sourceTree = "<group>"; };
 		B8FB600B290C290E00696C58 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		B8FB600D290C29FF00696C58 /* ResultViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultViewController.xib; sourceTree = "<group>"; };
@@ -180,7 +178,6 @@
 				B8FB6019290C4DAD00696C58 /* CorrectAnswerCell.swift */,
 				B8FB600D290C29FF00696C58 /* ResultViewController.xib */,
 				B8EDDC3B2914230C00756491 /* NavigationControllerRouter.swift */,
-				B8EDDC3F29143C3100756491 /* Question.swift */,
 				B8E5534629168DE000C5CC72 /* iOSViewControllerFactory.swift */,
 				B8E5534229168C7900C5CC72 /* ViewControllerFactory.swift */,
 				B8EA7FA7291C079000D44957 /* ResultsPresenter.swift */,
@@ -365,7 +362,6 @@
 				B8FB601A290C4DAD00696C58 /* CorrectAnswerCell.swift in Sources */,
 				B89AD4D9290AEB2300AF9D3A /* SceneDelegate.swift in Sources */,
 				B8FB6018290C4D8000696C58 /* PresentableCell.swift in Sources */,
-				B8EDDC4029143C3100756491 /* Question.swift in Sources */,
 				B8FB601C290C4DCB00696C58 /* WrongAnswerCell.swift in Sources */,
 				B8E5534829168DE500C5CC72 /* iOSViewControllerFactory.swift in Sources */,
 				B8EDDC3C2914230C00756491 /* NavigationControllerRouter.swift in Sources */,

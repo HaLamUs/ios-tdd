@@ -1,18 +1,18 @@
 //
 //  Question.swift
-//  QuizApp
+//  QuizEngineX
 //
-//  Created by lamha on 04/11/2022.
+//  Created by lamha on 11/11/2022.
 //
 
 import Foundation
 //dont care type cause we want support other type of question still have single or multiple option (answer)
 // with this implement we have both answer support single, multi and question with dont care type
-enum Question<T: Hashable>: Hashable {
+public enum Question<T: Hashable>: Hashable {
     case singleAnswer(T)
     case multipleAnswer(T)
     
-    var hashValue: Int {
+    public var hashValue: Int {
         switch self {
         case .singleAnswer(let t):
             return t.hashValue
@@ -21,7 +21,7 @@ enum Question<T: Hashable>: Hashable {
         }
     }
     
-    static func ==(lhs: Question<T>, rhs: Question<T>) -> Bool {
+    public static func ==(lhs: Question<T>, rhs: Question<T>) -> Bool {
         switch (lhs, rhs) {
         case (.singleAnswer(let a), .singleAnswer(let b)):
             return a == b

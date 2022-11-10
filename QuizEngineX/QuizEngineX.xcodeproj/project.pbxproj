@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B847FC64291D748200038918 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = B856EDAA291D72F400515F60 /* Question.swift */; };
+		B856EDAB291D72F400515F60 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = B856EDAA291D72F400515F60 /* Question.swift */; };
 		B89894242913E6250053E619 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89894232913E6250053E619 /* Result.swift */; };
 		B89894262913E6490053E619 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89894252913E6490053E619 /* Router.swift */; };
 		B89894282913E6A20053E619 /* GameTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89894272913E6A20053E619 /* GameTest.swift */; };
@@ -43,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B856EDAA291D72F400515F60 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		B89894232913E6250053E619 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		B89894252913E6490053E619 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		B89894272913E6A20053E619 /* GameTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTest.swift; sourceTree = "<group>"; };
@@ -117,6 +120,7 @@
 				B89894292913E8520053E619 /* Game.swift */,
 				B89894252913E6490053E619 /* Router.swift */,
 				B89894232913E6250053E619 /* Result.swift */,
+				B856EDAA291D72F400515F60 /* Question.swift */,
 			);
 			path = QuizEngineX;
 			sourceTree = "<group>";
@@ -306,6 +310,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B856EDAB291D72F400515F60 /* Question.swift in Sources */,
 				B89894242913E6250053E619 /* Result.swift in Sources */,
 				B89894262913E6490053E619 /* Router.swift in Sources */,
 				B8B28DB329082AAD00942039 /* Flow.swift in Sources */,
@@ -327,6 +332,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B847FC64291D748200038918 /* Question.swift in Sources */,
 				B8EDDC3129141E1C00756491 /* Result.swift in Sources */,
 				B8EDDC3329141E1C00756491 /* Flow.swift in Sources */,
 				B8EDDC3229141E1C00756491 /* Router.swift in Sources */,
