@@ -102,4 +102,10 @@ class iOSViewControllerFactoryTest: XCTestCase {
         let controller = sut.resultViewController(for: result) as! ResultViewController
         return (controller, presenter)
     }
+    
+    func test_resultViewController_createsControllerWithTile() {
+        let results = makeResults()
+        
+        XCTAssertEqual(results.controller.title, results.presenter.title)
+    }
 }

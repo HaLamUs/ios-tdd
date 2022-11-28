@@ -16,6 +16,7 @@ class ResultViewControllerTest: XCTestCase {
         let sut = makeSUT(summary: "a summary")
         XCTAssertEqual(sut.headerLabel.text, "a summary")
     }
+    
     func test_viewDidLoad_renderAnswers() {
         XCTAssertEqual(makeSUT(anwers: [makeAnswer()]).tableView.numberOfRows(inSection: 0), 1)
         XCTAssertEqual(makeSUT(anwers: []).tableView.numberOfRows(inSection: 0), 0)

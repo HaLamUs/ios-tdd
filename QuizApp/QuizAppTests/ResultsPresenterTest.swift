@@ -25,6 +25,12 @@ class ResultsPresenterTest: XCTestCase {
         XCTAssertEqual(sut.summary, "You got 1/2 correct")
     }
     
+    func test_title_returnFormattedTitle() {
+        let result: ResultX<Question<String>, [String]> = ResultX(answers: [:], score: 1)
+        let sut = ResultsPresenter(result: result, question: [], correctAnswers: [:])
+        XCTAssertEqual(sut.title, "Result")
+    }
+    
     func test_presentableAnswers_withoutQuestions_isEmpty() {
         let answers = [Question<String>: [String]]()
         let result = ResultX(answers: answers, score: 0)
