@@ -51,8 +51,7 @@ class QuestionViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        if tableView.isMultipleTouchEnabled {
-            
+        if allowsMultipleSelection {
             selection?(selectOption(in: tableView))
         }
     }
