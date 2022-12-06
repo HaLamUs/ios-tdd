@@ -23,9 +23,12 @@ extension ResultX: Equatable where Answer: Equatable {
 }
 
 // we dont want public we just want test
-extension ResultX: Hashable where Answer: Equatable {
+extension ResultX: Hashable where Answer: Hashable {
     
     public func hash(into hasher: inout Hasher) {
-        hasher.combine(1)
+        hasher.combine(answers)
+        hasher.combine(score)
+        // we dont hardcode anymore
+//        hasher.combine(1)
     }
 }
