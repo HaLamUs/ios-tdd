@@ -32,7 +32,7 @@ class ResultsPresenterTest: XCTestCase {
     }
     
     func test_presentableAnswers_withoutQuestions_isEmpty() {
-        let answers = [Question<String>: [String]]()
+//        let answers = [Question<String>: [String]]()
 //        let result = ResultX(answers: answers, score: 0)
         let sut = ResultsPresenter(result: .make(), question: [], correctAnswers: [:])
         XCTAssertTrue(sut.presentableAnswer.isEmpty)
