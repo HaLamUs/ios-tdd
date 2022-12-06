@@ -15,36 +15,36 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
-//        let question1 = Question.singleAnswer("What is my name?")
-//        let question2 = Question.multipleAnswer("Where do I live?")
-//        let questions = [question1, question2]
-//        
-//        let option1 = "Lam"
-//        let option2 = "Ha"
-//        let option3 = "Biryul"
-//        let options1 = [option1, option2, option3]
-//        
-//        let option4 = "Cam"
-//        let option5 = "Thai"
-//        let option6 = "Lao"
-//        let options2 = [option4, option5, option6]
-//        
-//        
-//        let correctAnswers = [question1: [option3], question2: [option4, option5]]
-//        
-//        let factory = iOSViewControllerFactory(for: questions,
-//                                                  options: [question1: options1, question2: options2],
-//                                                  correctAnswers: correctAnswers)
-//        let navigationController = UINavigationController()
-//        let router = NavigationControllerRouter(navigationController, factory: factory)
-//        
-//        guard let windowScence = (scene as? UIWindowScene) else { return }
-//        let window = UIWindow(windowScene: windowScence)
-//        window.rootViewController = navigationController
-//        self.window = window
-//        window.makeKeyAndVisible()
-//        
-//        game = startGame(questions: questions, router: router, correctAnswers: correctAnswers)
+        let question1 = Question.singleAnswer("What is my name?")
+        let question2 = Question.multipleAnswer("Where do I live?")
+        let questions = [question1, question2]
+        
+        let option1 = "Lam"
+        let option2 = "Ha"
+        let option3 = "Biryul"
+        let options1 = [option1, option2, option3]
+        
+        let option4 = "Cam"
+        let option5 = "Thai"
+        let option6 = "Lao"
+        let options2 = [option4, option5, option6]
+        
+        
+        let correctAnswers = [question1: [option3], question2: [option4, option5]]
+        
+        let factory = iOSViewControllerFactory(for: questions,
+                                                  options: [question1: options1, question2: options2],
+                                                  correctAnswers: correctAnswers)
+        let navigationController = UINavigationController()
+        let router = NavigationControllerRouter(navigationController, factory: factory)
+        
+        guard let windowScence = (scene as? UIWindowScene) else { return }
+        let window = UIWindow(windowScene: windowScence)
+        window.rootViewController = navigationController
+        self.window = window
+        window.makeKeyAndVisible()
+        
+        game = startGame(questions: questions, router: router, correctAnswers: correctAnswers)
         
         
                 

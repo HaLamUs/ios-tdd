@@ -14,5 +14,7 @@ extension ResultX: Hashable {
         lhs.score == rhs.score
     }
     
-    public var hashValue: Int { 1 }
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(1)
+    }
 }

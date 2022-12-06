@@ -13,7 +13,7 @@ struct QuestionsPresenter {
     let question: Question<String>
     
     var title: String {
-        if let index = questions.index(of: question) {
+        if let index = questions.firstIndex(of: question) {
             return "Question #\(index + 1)"
         }
         return ""
