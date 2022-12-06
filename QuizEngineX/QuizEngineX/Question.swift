@@ -22,14 +22,14 @@ public enum Question<T: Hashable>: Hashable {
 //        }
 //    }
     
-    public var hashValue: Int {
-        switch self {
-        case .singleAnswer(let t):
-            return "singleAnswer".hashValue ^ t.hashValue
-        case .multipleAnswer(let t):
-            return  "multipleAnswer".hashValue ^ t.hashValue
-        }
-    }
+//    public var hashValue: Int {
+//        switch self {
+//        case .singleAnswer(let t):
+//            return "singleAnswer".hashValue ^ t.hashValue
+//        case .multipleAnswer(let t):
+//            return  "multipleAnswer".hashValue ^ t.hashValue
+//        }
+//    }
     
     //swift already supp we dont need anymore
 //    public static func ==(lhs: Question<T>, rhs: Question<T>) -> Bool {
