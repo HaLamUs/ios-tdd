@@ -11,13 +11,23 @@ import Foundation
 public enum Question<T: Hashable>: Hashable {
     case singleAnswer(T)
     case multipleAnswer(T)
-        
-    public func hash(into hasher: inout Hasher) {
+    
+    // we dont need this any more
+//    public func hash(into hasher: inout Hasher) {
+//        switch self {
+//        case .singleAnswer(let t):
+//            return hasher.combine(t)
+//        case .multipleAnswer(let t):
+//            return hasher.combine(t)
+//        }
+//    }
+    
+    public var hashValue: Int {
         switch self {
         case .singleAnswer(let t):
-            return hasher.combine(t)
+            return "singleAnswer".hashValue ^ t.hashValue
         case .multipleAnswer(let t):
-            return hasher.combine(t)
+            return  "multipleAnswer".hashValue ^ t.hashValue
         }
     }
     

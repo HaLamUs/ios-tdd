@@ -11,34 +11,35 @@ import XCTest
 
 class QuestionTest: XCTestCase {
     
-    func test_hashValue_SingleAnswer_returnTypeHash() {
+    func test_hashValue_withSameWrappedValue_isDifferentForSingleAndMultipleAnswer() {
+        let aValue = UUID()
         
-        let type = "A string"
-        let sut = Question.singleAnswer(type)
+        // vs cái cách mày tự implement hàm hash mà ko có XOR thì đoạn này nó trả về hashValue sai nha 
+        XCTAssertNotEqual(Question.singleAnswer(aValue).hashValue, Question.multipleAnswer(aValue).hashValue)
+    }
+    
+    func test_hashValue_forSingleAnswer() {
         
-        XCTAssertEqual(sut.hashValue, type.hashValue)
+        let aValue = UUID()
+        let anotherValue = UUID()
+        
+        XCTAssertEqual(Question.singleAnswer(aValue).hashValue, Question.singleAnswer(aValue).hashValue)
+        
+        XCTAssertNotEqual(Question.singleAnswer(anotherValue).hashValue, Question.singleAnswer(aValue).hashValue)
         
     }
     
-    func test_hashValue_MultipleAnswer_returnTypeHash() {
+    func test_hashValue_forMultipleAnswer() {
         
-        let type = [""]
-        let sut = Question.multipleAnswer(type)
+        let aValue = UUID()
+        let anotherValue = UUID()
         
-        XCTAssertEqual(sut.hashValue, type.hashValue)
+        XCTAssertEqual(Question.multipleAnswer(aValue).hashValue, Question.multipleAnswer(aValue).hashValue)
+        
+        XCTAssertNotEqual(Question.multipleAnswer(anotherValue).hashValue, Question.multipleAnswer(aValue).hashValue)
         
     }
     
-//    func test_equal_isEqual() {
-//        XCTAssertEqual(Question.singleAnswer("a string"), Question.singleAnswer("a string"))
-//        XCTAssertEqual(Question.multipleAnswer("a string"), Question.multipleAnswer("a string"))
-//    }
-//    
-//    func test_equal_isNotEqual() {
-//        XCTAssertNotEqual(Question.singleAnswer("a string"), Question.singleAnswer("another string"))
-//        XCTAssertNotEqual(Question.multipleAnswer("a string"), Question.multipleAnswer("another string"))
-//        XCTAssertNotEqual(Question.singleAnswer("a string"), Question.multipleAnswer("another string"))
-//        XCTAssertNotEqual(Question.multipleAnswer("a string"), Question.singleAnswer("a string"))
-//    }
+//     
     
 }
