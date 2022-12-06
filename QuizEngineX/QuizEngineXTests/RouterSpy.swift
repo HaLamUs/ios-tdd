@@ -12,7 +12,7 @@ import QuizEngineX
 // This Fake should be simple
 class RouterSpy: Router {
     var routedQuestions: [String] = []
-    var routedResult: Result<String, String>? = nil
+    var routedResult: ResultX<String, String>? = nil
     var answerCallback: ((String) -> (Void)) = { _ in }
     
     func routeTo(question: String, answerCallback: @escaping (String) -> Void) {
@@ -20,7 +20,7 @@ class RouterSpy: Router {
         self.answerCallback = answerCallback
     }
     
-    func routeTo(result: Result<String, String>) {
+    func routeTo(result: ResultX<String, String>) {
         routedResult = result
     }
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Flow<Question: Hashable, Answer, R: Router> where R.Answer == Answer, R.Question == Question {
+class Flow<Question, Answer, R: Router> where R.Answer == Answer, R.Question == Question {
     private let router: R
     private let questions: [Question]
     private var answers: [Question: Answer] = [:]
@@ -39,7 +39,7 @@ class Flow<Question: Hashable, Answer, R: Router> where R.Answer == Answer, R.Qu
     }
     
     private func moveNextQuestion(_ question: Question, _ answer: Answer) {
-        if let currentQuestionIndex = questions.index(of: question) {
+        if let currentQuestionIndex = questions.firstIndex(of: question) {
             answers[question] = answer
             let nextQuestionIndex = currentQuestionIndex + 1
             if nextQuestionIndex < questions.count {
