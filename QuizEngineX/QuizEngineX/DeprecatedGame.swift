@@ -53,8 +53,7 @@ private class QuizDelegateToRouterAdaper<R: Router>: QuizDelegate {
     
 }
 
-
-private func scoring<Question: Hashable, Answer: Equatable>
+func scoring<Question: Hashable, Answer: Equatable>
                 (_ answers: [Question: Answer],
                  correctAnswers: [Question: Answer]) -> Int {
     return answers.reduce(0) { // var score = 0
