@@ -24,7 +24,7 @@ public func startGame<Question, Answer: Equatable, R: Router>
                      correctAnswers:[Question: Answer]) -> Game<Question, Answer, R> where R.Question == Question, R.Answer == Answer
 {
     let flow = Flow(questions: questions,
-                    router: QuizDelegateToRouterAdaper(router: router),
+                    delegate: QuizDelegateToRouterAdaper(router: router),
                     scoring:
                         { scoring($0, correctAnswers: correctAnswers) })
     flow.start() // need to hold strong ref, if not it gone in the middle wont assign back to router

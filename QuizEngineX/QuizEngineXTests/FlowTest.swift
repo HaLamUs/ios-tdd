@@ -128,25 +128,17 @@ class FlowTest: XCTestCase {
     
     // lil factory helper func
     private func makeSUT(questions: [String], scoring: @escaping ([String: String]) -> Int = { _ in 0 }) -> Flow<DelegateSpy> {
-        Flow(questions: questions, router: delegate, scoring: scoring)
+        Flow(questions: questions, delegate: delegate, scoring: scoring)
     }
     
     func test_viewDidLoad_withCorrectAnswer_renderCell() {
         
     }
     
-    private class DelegateSpy: Router, QuizDelegate {
+    private class DelegateSpy:  QuizDelegate {
         var handleQuestions: [String] = []
         var handledResult: ResultX<String, String>? = nil
-        var answerCallback: ((String) -> (Void)) = { _ in }
-        
-        func routeTo(question: String, answerCallback: @escaping (String) -> Void) {
-            handle(question: question, answerCallback: answerCallback)
-        }
-        
-        func routeTo(result: ResultX<String, String>) {
-            handle(result: result)
-        }
+        var answerCallback: ((String) -> (Void)) = { _ in } 
         
         func handle(question: String, answerCallback: @escaping (String) -> Void) {
             handleQuestions.append(question)
