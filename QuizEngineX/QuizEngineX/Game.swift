@@ -15,6 +15,7 @@ public class Game<Question, Answer, R: Router> where R.Question == Question, R.A
     }
 }
 
+@available(*, deprecated)
 public func startGame<Question, Answer: Equatable, R: Router>
                     (questions: [Question],
                      router: R,

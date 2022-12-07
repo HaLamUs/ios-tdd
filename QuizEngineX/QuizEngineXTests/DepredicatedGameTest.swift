@@ -9,9 +9,10 @@ import Foundation
 import XCTest
 import QuizEngineX // we dont need @testable coz we want to test public interface
 
-class GameTest: XCTestCase {
-    let router = RouterSpy()
-    var game: Game<String, String, RouterSpy>!
+@available(*, deprecated)
+class DeprecatedGameTest: XCTestCase {
+    private let router = RouterSpy()
+    private var game: Game<String, String, RouterSpy>!
     
     override func setUp() {
         super.setUp()
@@ -41,5 +42,19 @@ class GameTest: XCTestCase {
         XCTAssertEqual(router.routedResult!.score, 2)
         
     }
+    
+    private class RouterSpy: Router {
+        var routedResult: ResultX<String, String>? = nil
+        var answerCallback: ((String) -> (Void)) = { _ in }
+        
+        func routeTo(question: String, answerCallback: @escaping (String) -> Void) {
+            self.answerCallback = answerCallback
+        }
+        
+        func routeTo(result: ResultX<String, String>) {
+            routedResult = result
+        }
+    }
+
     
 }
