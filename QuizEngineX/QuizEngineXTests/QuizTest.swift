@@ -7,31 +7,7 @@
 
 import Foundation
 import XCTest
-@testable import QuizEngineX // we dont need @testable coz we want to test public interface
-
-final class Quiz {
-    private let flow: Any
-    
-    private init(flow: Any) {
-        self.flow = flow
-    }
-    
-    static func start<Question, Answer: Equatable, Delegate: QuizDelegate>
-                        (questions: [Question],
-                         delegate: Delegate,
-                         correctAnswers:[Question: Answer]) -> Quiz where Delegate.Question == Question, Delegate.Answer == Answer
-    {
-        let flow = Flow(questions: questions,
-                        delegate: delegate,
-                        scoring:
-                            { scoring($0, correctAnswers: correctAnswers) })
-        flow.start() // need to hold strong ref, if not it gone in the middle wont assign back to router
-                    // flow after start weak self to move next question
-                    // GameTest - router.answerCallback("A1") --> null not call the callback
-                    // Solve: return BUT we wrap it into diff type SO no one know about it
-        return Quiz(flow: flow)
-    }
-}
+import QuizEngineX // we dont need @testable coz we want to test public interface
 
 class QuizTest: XCTestCase {
     private let delegate = DelegateSpy()
@@ -66,17 +42,9 @@ class QuizTest: XCTestCase {
         
     }
     
-    private class DelegateSpy: Router, QuizDelegate {
+    private class DelegateSpy: QuizDelegate {
         var handleResult: ResultX<String, String>? = nil
         var answerCallback: ((String) -> (Void)) = { _ in }
-        
-        func routeTo(question: String, answerCallback: @escaping (String) -> Void) {
-            handle(question: question, answerCallback: answerCallback)
-        }
-        
-        func routeTo(result: ResultX<String, String>) {
-            handle(result: result)
-        }
         
         func handle(question: String, answerCallback: @escaping (String) -> Void) {
             self.answerCallback = answerCallback
