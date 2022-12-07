@@ -18,11 +18,3 @@ public protocol Router {
     func routeTo(question: Question, answerCallback: @escaping (Answer) -> Void)
     func routeTo(result: ResultX<Question, Answer>)
 }
-
-public protocol QuizDelegate {
-    associatedtype Answer
-    associatedtype Question: Hashable
-    
-    func handle(question: Question, answerCallback: @escaping (Answer) -> Void)
-    func handle(result: ResultX<Question, Answer>)
-}
