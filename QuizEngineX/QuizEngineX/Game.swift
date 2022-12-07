@@ -8,10 +8,11 @@
 import Foundation
 
 @available(*, deprecated)
-public class Game<Question, Answer, R: Router> where R.Question == Question, R.Answer == Answer {
-    let flow: Flow<Question, Answer, R>
+public class Game<Question, Answer, R: Router> {//where R.Question == Question, R.Answer == Answer {
+    // because this private we dont want change the Router type yet
+    let flow: Any//Flow<Question, Answer, R>
     
-    init(flow: Flow<Question, Answer, R>) {
+    init(flow: Any) {//Flow<Question, Answer, R>) {
         self.flow = flow
     }
 }
@@ -20,10 +21,10 @@ public class Game<Question, Answer, R: Router> where R.Question == Question, R.A
 public func startGame<Question, Answer: Equatable, R: Router>
                     (questions: [Question],
                      router: R,
-                     correctAnswers:[Question: Answer]) -> Game<Question, Answer, R>
+                     correctAnswers:[Question: Answer]) -> Game<Question, Answer, R> where R.Question == Question, R.Answer == Answer
 {
     let flow = Flow(questions: questions,
-                    router: router,
+                    router: QuizDelegateToRouterAdaper(router: router),
                     scoring:
                         { scoring($0, correctAnswers: correctAnswers) })
     flow.start() // need to hold strong ref, if not it gone in the middle wont assign back to router
@@ -31,6 +32,25 @@ public func startGame<Question, Answer: Equatable, R: Router>
                 // GameTest - router.answerCallback("A1") --> null not call the callback
                 // Solve: return BUT we wrap it into diff type SO no one know about it
     return Game(flow: flow)
+}
+
+@available(*, deprecated) 
+private class QuizDelegateToRouterAdaper<R: Router>: QuizDelegate {
+    
+    private let router: R
+    
+    init(router: R) {
+        self.router = router
+    }
+    
+    func handle(question: R.Question, answerCallback: @escaping (R.Answer) -> Void) {
+        router.routeTo(question: question, answerCallback: answerCallback)
+    }
+    
+    func handle(result: ResultX<R.Question, R.Answer>) {
+        router.routeTo(result: result)
+    }
+    
 }
 
 
