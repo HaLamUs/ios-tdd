@@ -62,3 +62,16 @@ private func scoring<Question: Hashable, Answer: Equatable>
         return score + ( correctAnswers[tuple.key] == tuple.value ? 1 : 0 )
     }
 }
+
+/*
+ It's a contract that change depend on platform
+ */
+@available(*, deprecated)
+public protocol Router {
+    associatedtype Answer
+    associatedtype Question: Hashable // why because question used as a key in dict
+    
+    func routeTo(question: Question, answerCallback: @escaping (Answer) -> Void)
+    func routeTo(result: ResultX<Question, Answer>)
+}
+ 

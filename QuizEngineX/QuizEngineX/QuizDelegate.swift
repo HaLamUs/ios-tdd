@@ -7,7 +7,7 @@
 
 import Foundation
 
-public protocol QuizDelegate {
+ public protocol QuizDelegate {
     associatedtype Answer
     associatedtype Question: Hashable
     
