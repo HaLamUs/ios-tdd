@@ -19,24 +19,24 @@ class QuizTest: XCTestCase {
     }
     
     func test_startQuiz_answerZeroOutOfTwoCorrectly_scoresZero() {
-        delegate.answerCallback("Wrong") //given anwser
-        delegate.answerCallback("Wrong") // given anwser
+        delegate.answerCompletion("Wrong") //given anwser
+        delegate.answerCompletion("Wrong") // given anwser
         
         XCTAssertEqual(delegate.handleResult!.score, 0)
         
     }
     
     func test_startQuiz_answerOneOutOfTwoCorrectly_scores1() {
-        delegate.answerCallback("A1") //given anwser
-        delegate.answerCallback("Wrong") // given anwser
+        delegate.answerCompletion("A1") //given anwser
+        delegate.answerCompletion("Wrong") // given anwser
         
         XCTAssertEqual(delegate.handleResult!.score, 1)
         
     }
     
     func test_startQuiz_answerTwoOutOfTwoCorrectly_scores2() {
-        delegate.answerCallback("A1") //given anwser
-        delegate.answerCallback("A2") // given anwser
+        delegate.answerCompletion("A1") //given anwser
+        delegate.answerCompletion("A2") // given anwser
         
         XCTAssertEqual(delegate.handleResult!.score, 2)
         
@@ -45,10 +45,10 @@ class QuizTest: XCTestCase {
     private class DelegateSpy: QuizDelegate {
         
         var handleResult: ResultX<String, String>? = nil
-        var answerCallback: ((String) -> (Void)) = { _ in }
+        var answerCompletion: ((String) -> (Void)) = { _ in }
         
         func answer(for: String, completion: @escaping (String) -> Void) {
-            self.answerCallback = completion
+            self.answerCompletion = completion
         }
         
         func handle(result: ResultX<String, String>) {
