@@ -43,11 +43,12 @@ class QuizTest: XCTestCase {
     }
     
     private class DelegateSpy: QuizDelegate {
+        
         var handleResult: ResultX<String, String>? = nil
         var answerCallback: ((String) -> (Void)) = { _ in }
         
-        func handle(question: String, answerCallback: @escaping (String) -> Void) {
-            self.answerCallback = answerCallback
+        func answer(for: String, completion: @escaping (String) -> Void) {
+            self.answerCallback = completion
         }
         
         func handle(result: ResultX<String, String>) {

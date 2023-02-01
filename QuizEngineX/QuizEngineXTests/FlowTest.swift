@@ -135,15 +135,16 @@ class FlowTest: XCTestCase {
         
     }
     
-    private class DelegateSpy:  QuizDelegate {
+    private class DelegateSpy: QuizDelegate {
         var handleQuestions: [String] = []
         var handledResult: ResultX<String, String>? = nil
         var answerCallback: ((String) -> (Void)) = { _ in } 
         
-        func handle(question: String, answerCallback: @escaping (String) -> Void) {
+        func answer(for question: String, completion: @escaping (String) -> Void) {
             handleQuestions.append(question)
-            self.answerCallback = answerCallback
+            self.answerCallback = completion
         }
+        
         
         func handle(result: ResultX<String, String>) {
             handledResult = result

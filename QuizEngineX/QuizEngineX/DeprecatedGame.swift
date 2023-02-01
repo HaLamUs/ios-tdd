@@ -36,6 +36,7 @@ public func startGame<Question, Answer: Equatable, R: Router>
 
 @available(*, deprecated) 
 private class QuizDelegateToRouterAdaper<R: Router>: QuizDelegate {
+
     
     private let router: R
     
@@ -43,8 +44,8 @@ private class QuizDelegateToRouterAdaper<R: Router>: QuizDelegate {
         self.router = router
     }
     
-    func handle(question: R.Question, answerCallback: @escaping (R.Answer) -> Void) {
-        router.routeTo(question: question, answerCallback: answerCallback)
+    func answer(for question: R.Question, completion: @escaping (R.Answer) -> Void) {
+        router.routeTo(question: question, answerCallback: completion)
     }
     
     func handle(result: ResultX<R.Question, R.Answer>) {
