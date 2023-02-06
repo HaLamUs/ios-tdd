@@ -27,6 +27,7 @@ class Flow<Delegate: QuizDelegate> {
         if let firstQuestion = questions.first {
             delegate.answer(for: firstQuestion, completion: nextCallBack(firstQuestion))
         } else {
+            delegate.didCompleteQuiz(withAnswer: [])
             delegate.handle(result: result())
         }
         

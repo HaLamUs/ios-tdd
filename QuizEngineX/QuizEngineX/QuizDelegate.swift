@@ -23,7 +23,5 @@ public protocol QuizDelegate {
 #warning("Delete this at some point!")
 public extension QuizDelegate {
     // default implementation 
-    func answer(for question: Question, completion: @escaping (Answer) -> Void) {
-        
-    }
+    func didCompleteQuiz(withAnswer: [(question: Question, answer: Answer)]) { }
 }
