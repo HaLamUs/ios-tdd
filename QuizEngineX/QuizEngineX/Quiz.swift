@@ -16,14 +16,11 @@ public final class Quiz {
     
     public static func start<Delegate: QuizDelegate>(
             questions: [Delegate.Question],
-            delegate: Delegate,
-            correctAnswers:[Delegate.Question: Delegate.Answer])
+            delegate: Delegate)
             -> Quiz where Delegate.Answer: Equatable
     {
         let flow = Flow(questions: questions,
-                        delegate: delegate,
-                        scoring:
-                            { scoring($0, correctAnswers: correctAnswers) })
+                        delegate: delegate)
         flow.start() // need to hold strong ref, if not it gone in the middle wont assign back to router
                     // flow after start weak self to move next question
                     // GameTest - router.answerCallback("A1") --> null not call the callback
