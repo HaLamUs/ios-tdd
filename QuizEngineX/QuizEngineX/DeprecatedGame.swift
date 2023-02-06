@@ -46,6 +46,16 @@ private class QuizDelegateToRouterAdaper<R: Router>: QuizDelegate where R.Answer
         router.routeTo(question: question, answerCallback: completion)
     }
     
+    private func scoring(_ answers: [R.Question: R.Answer],
+                 correctAnswers: [R.Question: R.Answer]) -> Int {
+        return answers.reduce(0) { // var score = 0
+            (score, tuple) in
+            return score + ( correctAnswers[tuple.key] == tuple.value ? 1 : 0 )
+        }
+    }
+    
+    func handle(result: ResultX<R.Question, R.Answer>) {}
+    
     func didCompleteQuiz(withAnswer answers: [(question: R.Question, answer: R.Answer)]) {
         let answersDictionary = answers.reduce([R.Question: R.Answer]()) {
             acc, tuple in
@@ -58,9 +68,7 @@ private class QuizDelegateToRouterAdaper<R: Router>: QuizDelegate where R.Answer
         router.routeTo(result: result)
     }
     
-    func handle(result: ResultX<R.Question, R.Answer>) {
-//        router.routeTo(result: result)
-    }
+    
     
 }
 

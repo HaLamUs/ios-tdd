@@ -29,11 +29,3 @@ public final class Quiz {
     }
 }
 
-func scoring<Question: Hashable, Answer: Equatable>
-                (_ answers: [Question: Answer],
-                 correctAnswers: [Question: Answer]) -> Int {
-    return answers.reduce(0) { // var score = 0
-        (score, tuple) in
-        return score + ( correctAnswers[tuple.key] == tuple.value ? 1 : 0 )
-    }
-}
