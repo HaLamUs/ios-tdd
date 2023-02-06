@@ -15,6 +15,7 @@ class Flow<Delegate: QuizDelegate> {
     private let delegate: Delegate
     private let questions: [Question]
     private var answers: [Question: Answer] = [:]
+    private var newAnswers: [(Question,  Answer)] = []
     private var scoring: ([Question: Answer]) -> Int
     
     init(questions: [Question], delegate: Delegate, scoring: @escaping ([Question: Answer]) -> Int) {
@@ -27,7 +28,7 @@ class Flow<Delegate: QuizDelegate> {
         if let firstQuestion = questions.first {
             delegate.answer(for: firstQuestion, completion: nextCallBack(firstQuestion))
         } else {
-            delegate.didCompleteQuiz(withAnswer: [])
+            delegate.didCompleteQuiz(withAnswer: newAnswers)
             delegate.handle(result: result())
         }
         
@@ -44,7 +45,9 @@ class Flow<Delegate: QuizDelegate> {
     }
     
     private func moveNextQuestion(_ question: Question, _ answer: Answer) {
+        newAnswers.append((question, answer))
         if let currentQuestionIndex = questions.firstIndex(of: question) {
+//            newAnswers.append((question, answer))
             answers[question] = answer
             let nextQuestionIndex = currentQuestionIndex + 1
             if nextQuestionIndex < questions.count {
@@ -52,6 +55,7 @@ class Flow<Delegate: QuizDelegate> {
                 delegate.answer(for: nextQuestion, completion: nextCallBack(nextQuestion))
             }
             else {
+                delegate.didCompleteQuiz(withAnswer: newAnswers)
                 delegate.handle( result: result())
             }
         }
