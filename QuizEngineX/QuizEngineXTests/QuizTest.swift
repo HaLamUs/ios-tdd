@@ -13,10 +13,10 @@ class QuizTest: XCTestCase {
     private let delegate = DelegateSpy()
     private var quiz: Quiz!
     
-    func test_startQuiz_answersAllOfQuestionsk_completesWithAnswers() {
+    func test_startQuiz_answersAllOfQuestions_completesWithAnswers() {
         quiz = Quiz.start(questions: ["Q1", "Q2"], delegate: delegate)
-        delegate.answerCompletion("A1") //given anwser
-        delegate.answerCompletion("A2") // given anwser
+        delegate.answerCompletions[0]("A1") //given anwser
+        delegate.answerCompletions[1]("A2") // given anwser
         
         XCTAssertEqual(delegate.completedQuizzes.count, 1)
         assertEqual(delegate.completedQuizzes[0], [("Q1", "A1"), ("Q2", "A2")])
@@ -28,7 +28,7 @@ class QuizTest: XCTestCase {
     
     private class DelegateSpy: QuizDelegate {
         var completedQuizzes: [[(String, String)]] = []
-        var answerCompletion: ((String) -> (Void)) = { _ in }
+        var answerCompletions: [(String) -> (Void)] = []
         
         
         func didCompleteQuiz(withAnswer answers: [(question: String, answer: String)]) {
@@ -36,7 +36,7 @@ class QuizTest: XCTestCase {
         }
         
         func answer(for question: String, completion: @escaping (String) -> Void) {
-            self.answerCompletion = completion
+            self.answerCompletions.append(completion)
         }
         
         func handle(result: ResultX<String, String>) {
