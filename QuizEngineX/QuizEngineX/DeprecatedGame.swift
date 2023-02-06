@@ -24,9 +24,7 @@ public func startGame<Question, Answer: Equatable, R: Router>
                      correctAnswers:[Question: Answer]) -> Game<Question, Answer, R> where R.Question == Question, R.Answer == Answer
 {
     let flow = Flow(questions: questions,
-                    delegate: QuizDelegateToRouterAdaper(router: router),
-                    scoring:
-                        { scoring($0, correctAnswers: correctAnswers) })
+                    delegate: QuizDelegateToRouterAdaper(router: router, correctAnswers))
     flow.start() // need to hold strong ref, if not it gone in the middle wont assign back to router
                 // flow after start weak self to move next question
                 // GameTest - router.answerCallback("A1") --> null not call the callback
@@ -35,21 +33,33 @@ public func startGame<Question, Answer: Equatable, R: Router>
 }
 
 @available(*, deprecated) 
-private class QuizDelegateToRouterAdaper<R: Router>: QuizDelegate {
-
-    
+private class QuizDelegateToRouterAdaper<R: Router>: QuizDelegate where R.Answer: Equatable {
     private let router: R
+    private let correctAnswers: [R.Question: R.Answer]
     
-    init(router: R) {
+    init(router: R, _ correctAnswers: [R.Question: R.Answer]) {
         self.router = router
+        self.correctAnswers = correctAnswers
     }
     
     func answer(for question: R.Question, completion: @escaping (R.Answer) -> Void) {
         router.routeTo(question: question, answerCallback: completion)
     }
     
-    func handle(result: ResultX<R.Question, R.Answer>) {
+    func didCompleteQuiz(withAnswer answers: [(question: R.Question, answer: R.Answer)]) {
+        let answersDictionary = answers.reduce([R.Question: R.Answer]()) {
+            acc, tuple in
+            var acc = acc
+            acc[tuple.question] = tuple.answer
+            return acc
+        }
+        let score = scoring(answersDictionary, correctAnswers: correctAnswers)
+        let result = ResultX(answers: answersDictionary, score: score)
         router.routeTo(result: result)
+    }
+    
+    func handle(result: ResultX<R.Question, R.Answer>) {
+//        router.routeTo(result: result)
     }
     
 }
