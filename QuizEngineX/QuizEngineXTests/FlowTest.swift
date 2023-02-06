@@ -46,7 +46,7 @@ class FlowTest: XCTestCase {
         let sut = makeSUT(questions: ["Q1", "Q2"])
 
         sut.start()
-        delegate.answerCompletion("A1")
+        delegate.answerCompletions[0]("A1")
         XCTAssertTrue(delegate.completedQuizzes.isEmpty)
     }
     
@@ -70,8 +70,8 @@ class FlowTest: XCTestCase {
         
 
         sut.start()
-        delegate.answerCompletion("A1")
-        delegate.answerCompletion("A2")
+        delegate.answerCompletions[0]("A1")
+        delegate.answerCompletions[1]("A2")
         
         XCTAssertEqual(delegate.quetionAsked, ["Q1","Q2", "Q3"])
     }
@@ -80,7 +80,7 @@ class FlowTest: XCTestCase {
         let sut = makeSUT(questions: ["Q1"])
 
         sut.start()
-        delegate.answerCompletion("A1")
+        delegate.answerCompletions[0]("A1")
         
         XCTAssertEqual(delegate.quetionAsked, ["Q1"])
     }
@@ -104,8 +104,8 @@ class FlowTest: XCTestCase {
         let sut = makeSUT(questions: ["Q1", "Q2"])
         
         sut.start()
-        delegate.answerCompletion("A1")
-        delegate.answerCompletion("A2")
+        delegate.answerCompletions[0]("A1")
+        delegate.answerCompletions[1]("A2")
         XCTAssertEqual(delegate.completedQuizzes.count, 1)
 //        XCTAssertEqual(delegate.completedQuizzes[0], [("Q1", "A1"), ("Q2", "A2")])
         assertEqual(delegate.completedQuizzes[0], [("Q1", "A1"), ("Q2", "A2")])
@@ -130,7 +130,7 @@ class FlowTest: XCTestCase {
         var quetionAsked: [String] = []
         var handledResult: ResultX<String, String>? = nil
         var completedQuizzes: [[(String, String)]] = []
-        var answerCompletion: ((String) -> (Void)) = { _ in } 
+        var answerCompletions: [(String) -> (Void)] = []
         
         
         func didCompleteQuiz(withAnswer answers: [(question: String, answer: String)]) {
@@ -139,7 +139,7 @@ class FlowTest: XCTestCase {
         
         func answer(for question: String, completion: @escaping (String) -> Void) {
             quetionAsked.append(question)
-            self.answerCompletion = completion
+            self.answerCompletions.append(completion)
         }
         
         func handle(result: ResultX<String, String>) {
