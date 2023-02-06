@@ -25,6 +25,48 @@ class Flow<Delegate: QuizDelegate> {
     }
     
     func start() {
+        delegateQuestionHandling(at: questions.startIndex)
+    }
+    
+    private func delegateQuestionHandling(at index: Int) {
+        if index < questions.endIndex {
+            let question = questions[index]
+            delegate.answer(for: question, completion: answer(for: question, at: index))
+        } else {
+            delegate.didCompleteQuiz(withAnswer: newAnswers)
+            delegate.handle(result: result())
+        }
+    }
+    
+    private func delegateQuestionHandling(after index: Int) {
+        delegateQuestionHandling(at: questions.index(after: index))
+    }
+    
+    private func answer(for question: Question, at index: Int) -> (Answer) -> Void {
+        return {
+            [weak self] answer in
+            self?.newAnswers.replaceOrInsert((question, answer), at: index)
+            self?.answers[question] = answer
+            self?.delegateQuestionHandling(after: index)
+        }
+    }
+    
+    private func result() -> ResultX<Question, Answer> {
+        ResultX(answers: answers, score: scoring(answers))
+    }
+}
+
+private extension Array {
+    mutating func replaceOrInsert(_ element: Element, at index: Index) {
+        if index < count {
+            remove(at: index)
+        }
+        insert(element, at: index)
+    }
+}
+    
+    /*
+    func start() {
         if let firstQuestion = questions.first {
             delegate.answer(for: firstQuestion, completion: nextCallBack(firstQuestion))
         } else {
@@ -35,19 +77,12 @@ class Flow<Delegate: QuizDelegate> {
     }
     
     private func nextCallBack(_ question: Question) -> (Answer) -> Void {
-//        {
-//            [weak self] answer in
-//            if let strongSelf = self {
-//                strongSelf.moveNextQuestion(question, answer)
-//            }
-//        }
         {[weak self] in self?.moveNextQuestion(question, $0)}
     }
     
     private func moveNextQuestion(_ question: Question, _ answer: Answer) {
         newAnswers.append((question, answer))
         if let currentQuestionIndex = questions.firstIndex(of: question) {
-//            newAnswers.append((question, answer))
             answers[question] = answer
             let nextQuestionIndex = currentQuestionIndex + 1
             if nextQuestionIndex < questions.count {
@@ -63,9 +98,9 @@ class Flow<Delegate: QuizDelegate> {
     
     private func result() -> ResultX<Question, Answer> {
         ResultX(answers: answers, score: scoring(answers))
-    }
+    }*/
     
-}
+
 
 
 /*
