@@ -9,10 +9,7 @@ import Foundation
 
 public protocol QuizDelegate {
     associatedtype Answer
-    associatedtype Question: Hashable
-    
-    //    // asks the answer
-    //    func answer(for question: Question, completion: @escaping (Answer) -> Void)
+    associatedtype Question
     
     func answer(for question: Question, completion: @escaping (Answer) -> Void)
     func didCompleteQuiz(withAnswer: [(question: Question, answer: Answer)]) // array of tuple
