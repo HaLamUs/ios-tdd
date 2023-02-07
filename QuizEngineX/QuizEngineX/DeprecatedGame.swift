@@ -17,6 +17,14 @@ public class Game<Question, Answer, R: Router> {//where R.Question == Question, 
     }
 }
 
+
+@available(*, deprecated)
+public struct ResultX<Question: Hashable, Answer> {
+    public let answers: [Question: Answer]
+    public let score: Int
+    
+}
+
 @available(*, deprecated)
 public func startGame<Question, Answer: Equatable, R: Router>
                     (questions: [Question],

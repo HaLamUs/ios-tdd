@@ -12,7 +12,6 @@
 		B8263DC5294102CF00821C60 /* Quiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8263DC4294102CF00821C60 /* Quiz.swift */; };
 		B847FC64291D748200038918 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = B856EDAA291D72F400515F60 /* Question.swift */; };
 		B856EDAB291D72F400515F60 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = B856EDAA291D72F400515F60 /* Question.swift */; };
-		B89894242913E6250053E619 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89894232913E6250053E619 /* Result.swift */; };
 		B89894282913E6A20053E619 /* DeprecatedGameTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89894272913E6A20053E619 /* DeprecatedGameTest.swift */; };
 		B898942A2913E8520053E619 /* DeprecatedGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89894292913E8520053E619 /* DeprecatedGame.swift */; };
 		B8B28DA129082A7A00942039 /* QuizEngineX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8B28D9829082A7A00942039 /* QuizEngineX.framework */; };
@@ -22,7 +21,6 @@
 		B8EDDC2D29141E0D00756491 /* FlowTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B28DB029082A9A00942039 /* FlowTest.swift */; };
 		B8EDDC2F29141E0D00756491 /* DeprecatedGameTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89894272913E6A20053E619 /* DeprecatedGameTest.swift */; };
 		B8EDDC3029141E1C00756491 /* DeprecatedGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89894292913E8520053E619 /* DeprecatedGame.swift */; };
-		B8EDDC3129141E1C00756491 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89894232913E6250053E619 /* Result.swift */; };
 		B8EDDC3329141E1C00756491 /* Flow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B28DB229082AAD00942039 /* Flow.swift */; };
 /* End PBXBuildFile section */
 
@@ -48,7 +46,6 @@
 		B8263DC22940FDB600821C60 /* QuizTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizTest.swift; sourceTree = "<group>"; };
 		B8263DC4294102CF00821C60 /* Quiz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quiz.swift; sourceTree = "<group>"; };
 		B856EDAA291D72F400515F60 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
-		B89894232913E6250053E619 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		B89894272913E6A20053E619 /* DeprecatedGameTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeprecatedGameTest.swift; sourceTree = "<group>"; };
 		B89894292913E8520053E619 /* DeprecatedGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeprecatedGame.swift; sourceTree = "<group>"; };
 		B8B28D9829082A7A00942039 /* QuizEngineX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = QuizEngineX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -119,7 +116,6 @@
 				B8B28DB229082AAD00942039 /* Flow.swift */,
 				B89894292913E8520053E619 /* DeprecatedGame.swift */,
 				B8263DC02940FCA400821C60 /* QuizDelegate.swift */,
-				B89894232913E6250053E619 /* Result.swift */,
 				B8263DC4294102CF00821C60 /* Quiz.swift */,
 				B856EDAA291D72F400515F60 /* Question.swift */,
 			);
@@ -312,7 +308,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B856EDAB291D72F400515F60 /* Question.swift in Sources */,
-				B89894242913E6250053E619 /* Result.swift in Sources */,
 				B8263DC5294102CF00821C60 /* Quiz.swift in Sources */,
 				B8B28DB329082AAD00942039 /* Flow.swift in Sources */,
 				B898942A2913E8520053E619 /* DeprecatedGame.swift in Sources */,
@@ -335,7 +330,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B847FC64291D748200038918 /* Question.swift in Sources */,
-				B8EDDC3129141E1C00756491 /* Result.swift in Sources */,
 				B8EDDC3329141E1C00756491 /* Flow.swift in Sources */,
 				B8EDDC3029141E1C00756491 /* DeprecatedGame.swift in Sources */,
 			);
