@@ -108,7 +108,7 @@ class QuestionViewControllerTest: XCTestCase {
         XCTAssertEqual(receivedAnwer, ["A1"])
 
         sut.tableView.deselect(at: 0)
-        XCTAssertEqual(receivedAnwer, ["A1"])
+        XCTAssertEqual(receivedAnwer, [])
 
     }
     
