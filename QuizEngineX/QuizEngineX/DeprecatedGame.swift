@@ -54,8 +54,6 @@ private class QuizDelegateToRouterAdaper<R: Router>: QuizDelegate where R.Answer
         }
     }
     
-    func handle(result: ResultX<R.Question, R.Answer>) {}
-    
     func didCompleteQuiz(withAnswer answers: [(question: R.Question, answer: R.Answer)]) {
         let answersDictionary = answers.reduce([R.Question: R.Answer]()) {
             acc, tuple in

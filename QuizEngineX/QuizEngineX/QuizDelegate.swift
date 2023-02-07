@@ -16,12 +16,4 @@ public protocol QuizDelegate {
     
     func answer(for question: Question, completion: @escaping (Answer) -> Void)
     func didCompleteQuiz(withAnswer: [(question: Question, answer: Answer)]) // array of tuple
-    @available(*, deprecated, message: "use didCompleteQuiz(withAnswers: ) instead")
-    func handle(result: ResultX<Question, Answer>)
-}
-
-#warning("Delete this at some point!")
-public extension QuizDelegate {
-    // default implementation 
-    func didCompleteQuiz(withAnswer: [(question: Question, answer: Answer)]) { }
 }

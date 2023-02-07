@@ -54,7 +54,7 @@ class FlowTest: XCTestCase {
         let sut = makeSUT(questions: ["Q1"])
 
         sut.start()
-        XCTAssertNil(delegate.handledResult)
+        XCTAssertTrue(delegate.completedQuizzes.isEmpty)
     }
     
     func test_startTwice_withTwoQuestions_delegatesToFirstQuestionHandlingTwice() {
@@ -144,7 +144,6 @@ class FlowTest: XCTestCase {
     
     private class DelegateSpy: QuizDelegate {
         var quetionAsked: [String] = []
-        var handledResult: ResultX<String, String>? = nil
         var completedQuizzes: [[(String, String)]] = []
         var answerCompletions: [(String) -> (Void)] = []
         
@@ -157,11 +156,6 @@ class FlowTest: XCTestCase {
             quetionAsked.append(question)
             self.answerCompletions.append(completion)
         }
-        
-        func handle(result: ResultX<String, String>) {
-            handledResult = result
-        }
-        
     }
 
 }
