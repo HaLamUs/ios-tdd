@@ -7,7 +7,7 @@
 
 import Foundation
 
-@available(*, deprecated)
+@available(*, deprecated, message: "Use Quiz instead")
 public class Game<Question, Answer, R: Router> {//where R.Question == Question, R.Answer == Answer {
     // because this private we dont want change the Router type yet
     let flow: Any//Flow<Question, Answer, R>
@@ -25,7 +25,7 @@ public struct ResultX<Question: Hashable, Answer> {
     
 }
 
-@available(*, deprecated)
+@available(*, deprecated, message: "use Quiz.start instead")
 public func startGame<Question, Answer: Equatable, R: Router>
                     (questions: [Question],
                      router: R,
@@ -40,7 +40,7 @@ public func startGame<Question, Answer: Equatable, R: Router>
     return Game(flow: flow)
 }
 
-@available(*, deprecated) 
+@available(*, deprecated, message: "Remove along with the deprecated Game types") 
 private class QuizDelegateToRouterAdaper<R: Router>: QuizDelegate where R.Answer: Equatable {
     private let router: R
     private let correctAnswers: [R.Question: R.Answer]
@@ -81,7 +81,7 @@ private class QuizDelegateToRouterAdaper<R: Router>: QuizDelegate where R.Answer
 /*
  It's a contract that change depend on platform
  */
-@available(*, deprecated)
+@available(*, deprecated, message: "Use QuizDelegate instead")
 public protocol Router {
     associatedtype Answer
     associatedtype Question: Hashable // why because question used as a key in dict
