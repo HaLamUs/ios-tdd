@@ -80,19 +80,18 @@ class ResultsPresenterTest: XCTestCase {
     }
     
     func test_presentableAnswers_withTwoQuestions_mapsOrderedAnswer() {
-        let answers = [multipleAnswerQuestion: ["A2"], singleAnswerQuestion: ["A1", "A4"]]
-        let correctAnswers = [multipleAnswerQuestion: ["A2"], singleAnswerQuestion: ["A1", "A4"]]
-        let orderedQuestions = [singleAnswerQuestion, multipleAnswerQuestion]
+        let userAnswers = [(singleAnswerQuestion, ["A2"]), (multipleAnswerQuestion, ["A1", "A4"])]
+        let correctAnswers = [(singleAnswerQuestion, ["A2"]), (multipleAnswerQuestion, ["A1", "A4"])]
+
+        let sut = makeSUT(userAnswers: userAnswers, correctAnswers: correctAnswers)
         
-        let result = ResultX.make(answers: answers, score: 0)
-        let sut = ResultsPresenter(result: result, questions: orderedQuestions, correctAnswers: correctAnswers)
         XCTAssertEqual(sut.presentableAnswer.count, 2)
         XCTAssertEqual(sut.presentableAnswer.first!.question, "Q1")
-        XCTAssertEqual(sut.presentableAnswer.first!.answer, "A1, A4")
+        XCTAssertEqual(sut.presentableAnswer.first!.answer, "A2")
         XCTAssertNil(sut.presentableAnswer.first!.wrongAnswer)
         
         XCTAssertEqual(sut.presentableAnswer.last!.question, "Q2")
-        XCTAssertEqual(sut.presentableAnswer.last!.answer, "A2")
+        XCTAssertEqual(sut.presentableAnswer.last!.answer, "A1, A4")
         XCTAssertNil(sut.presentableAnswer.last!.wrongAnswer)
     }
     
