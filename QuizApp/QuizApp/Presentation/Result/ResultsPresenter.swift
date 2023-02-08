@@ -8,28 +8,47 @@
 import Foundation
 import QuizEngineX
 
-struct ResultsPresenter {
-    let result: ResultX<Question<String>, [String]>
-    let question: [Question<String>]
-    let correctAnswers: [Question<String>: [String]]
+final class ResultsPresenter {
+    typealias Answers = [(question: Question<String>, answers: [String])]
+    typealias Scorer = ([[String]], [[String]]) -> Int
+    
+    private let userAnswers: Answers
+    private let correctAnswers: Answers
+    private let scorer: Scorer
+    
+    init(result: ResultX<Question<String>, [String]>,
+         questions: [Question<String>],
+         correctAnswers: Dictionary<Question<String>, [String]>) {
+        // conveniently, dict.map return [tuple]
+//        self.userAnswers = result.answers.map { $0 } // <-- lam ntn thì ko có order
+        self.userAnswers = questions.map {
+            question in
+            (question, result.answers[question]!)
+        }
+        self.correctAnswers = questions.map {
+            question in
+            (question, correctAnswers[question] ?? [])
+        }
+//        self.scorer = BasicScore.score // <-- using our new Module
+        self.scorer = { _, _ in result.score }
+    }
     
     var title: String {
         "Result"
     }
     
     var summary: String {
-        "You got \(result.score)/\(result.answers.count) correct"
+        "You got \(score)/\(userAnswers.count) correct"
+    }
+    
+    private var score: Int {
+        scorer(userAnswers.map { $0.answers }, correctAnswers.map { $0.answers })
     }
     
     var presentableAnswer: [PresentableAnswer] {
-        question.map {
-            question in
-            guard let userAnswer = result.answers[question],
-                let correctAnswer = correctAnswers[question] else {
-                fatalError("Couldnt find correct answer for question: \(question)")
-            }
-            
-            return presentableAnswer(question, userAnswer, correctAnswer)
+        return zip(userAnswers, correctAnswers).map{
+            userAnswer, correctAnswer in
+            return presentableAnswer(userAnswer.question, userAnswer.answers, correctAnswer.answers)
         }
     }
     
