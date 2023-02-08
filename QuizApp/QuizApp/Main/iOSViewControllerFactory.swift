@@ -52,18 +52,6 @@ class iOSViewControllerFactory: ViewControllerFactory {
     }
     
     func resultViewController(for result: ResultX<Question<String>, [String]>) -> UIViewController {
-        
-//        self.userAnswers = questions.map {
-//            question in
-//            (question, result.answers[question]!)
-//        }
-//        self.correctAnswers = questions.map {
-//            question in
-//            (question, correctAnswers[question] ?? [])
-//        }
-////        self.scorer = BasicScore.score // <-- using our new Module
-//        self.scorer = { _, _ in result.score }
-        
         let presenter = ResultsPresenter(
             userAnswers: questions.map {
             question in

@@ -22,23 +22,6 @@ final class ResultsPresenter {
         self.scorer = scorer
     }
     
-    init(result: ResultX<Question<String>, [String]>,
-         questions: [Question<String>],
-         correctAnswers: Dictionary<Question<String>, [String]>) {
-        // conveniently, dict.map return [tuple]
-//        self.userAnswers = result.answers.map { $0 } // <-- lam ntn thì ko có order
-        self.userAnswers = questions.map {
-            question in
-            (question, result.answers[question]!)
-        }
-        self.correctAnswers = questions.map {
-            question in
-            (question, correctAnswers[question] ?? [])
-        }
-//        self.scorer = BasicScore.score // <-- using our new Module
-        self.scorer = { _, _ in result.score }
-    }
-    
     var title: String {
         "Result"
     }

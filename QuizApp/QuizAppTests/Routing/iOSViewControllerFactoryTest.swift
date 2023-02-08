@@ -109,3 +109,18 @@ class iOSViewControllerFactoryTest: XCTestCase {
         XCTAssertEqual(results.controller.title, results.presenter.title)
     }
 }
+
+private extension ResultsPresenter {
+    
+    convenience init(result: ResultX<Question<String>, [String]>,
+         questions: [Question<String>],
+         correctAnswers: Dictionary<Question<String>, [String]>) {
+        self.init(userAnswers: questions.map {
+            question in
+            (question, result.answers[question]!)
+        }, correctAnswers: questions.map {
+            question in
+            (question, correctAnswers[question] ?? [])
+        }, scorer: { _, _ in result.score })
+    }
+}
