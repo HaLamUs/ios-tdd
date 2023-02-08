@@ -16,6 +16,12 @@ final class ResultsPresenter {
     private let correctAnswers: Answers
     private let scorer: Scorer
     
+    init(userAnswers: Answers, correctAnswers: Answers, scorer: @escaping Scorer) {
+        self.userAnswers = userAnswers
+        self.correctAnswers = correctAnswers
+        self.scorer = scorer
+    }
+    
     init(result: ResultX<Question<String>, [String]>,
          questions: [Question<String>],
          correctAnswers: Dictionary<Question<String>, [String]>) {

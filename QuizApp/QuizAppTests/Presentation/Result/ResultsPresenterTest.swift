@@ -26,9 +26,9 @@ class ResultsPresenterTest: XCTestCase {
     }
     
     func test_title_returnFormattedTitle() {
-//        let result: ResultX<Question<String>, [String]> = ResultX(answers: [:], score: 1)
-        let sut = ResultsPresenter(result: .make(), questions: [], correctAnswers: [:])
-        XCTAssertEqual(sut.title, "Result")
+//        let sut = ResultsPresenter(result: .make(), questions: [], correctAnswers: [:])
+//        let sut = ResultsPresenter(userAnswers: [], correctAnswers: [], scorer: {_, _ in 0})
+        XCTAssertEqual(makeSUT().title, "Result")
     }
     
     func test_presentableAnswers_withoutQuestions_isEmpty() {
@@ -101,6 +101,12 @@ class ResultsPresenterTest: XCTestCase {
         XCTAssertEqual(sut.presentableAnswer.last!.question, "Q2")
         XCTAssertEqual(sut.presentableAnswer.last!.answer, "A2")
         XCTAssertNil(sut.presentableAnswer.last!.wrongAnswer)
+    }
+    
+    // MARK: - Helpers
+    
+    private func makeSUT() -> ResultsPresenter {
+        ResultsPresenter(userAnswers: [], correctAnswers: [], scorer: {_, _ in 0})
     }
     
 }
