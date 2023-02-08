@@ -10,9 +10,17 @@ import QuizEngineX
 
 class iOSViewControllerFactory: ViewControllerFactory {
 
+    typealias Answers = [(question: Question<String>, answers: [String])]
+    
     private let questions: [Question<String>]
     private let options: [Question<String>: [String]]
-    private let correctAnswers: [Question<String>: [String]]
+    private let correctAnswers: Answers
+    
+    init(options: [Question<String>: [String]], correctAnswers: Answers) {
+        self.options = options
+        self.questions = correctAnswers.map { $0.question }
+        self.correctAnswers = correctAnswers
+    }
     
     init(for questions: [Question<String>],
          options: [Question<String>: [String]],
@@ -20,7 +28,10 @@ class iOSViewControllerFactory: ViewControllerFactory {
     ) {
         self.options = options
         self.questions = questions
-        self.correctAnswers = correctAnswers
+        self.correctAnswers = questions.map {
+            question in
+            (question, correctAnswers[question] ?? [])
+        }
     }
     
     func questionViewController(for question: Question<String>, answerCallback: @escaping ([String]) -> Void) -> UIViewController {
@@ -57,10 +68,7 @@ class iOSViewControllerFactory: ViewControllerFactory {
             question in
             (question, result.answers[question]!)
         },
-            correctAnswers: questions.map {
-            question in
-            (question, correctAnswers[question] ?? [])
-        },
+            correctAnswers: correctAnswers,
             scorer:  { _, _ in result.score }
         )
     
