@@ -42,7 +42,7 @@ class NavigationControllerRouter: Router, QuizDelegate {
     }
     
     func didCompleteQuiz(withAnswer answers: [(question: Question<String>, answer: [String])]) {
-        show(factory.resultViewController(for: answers.map { $0 })) // map nó tự động trả về tuple 
+        show(factory.resultViewController(for: answers)) 
     }
     
     func routeTo(result: ResultX<Question<String>, [String]>) {

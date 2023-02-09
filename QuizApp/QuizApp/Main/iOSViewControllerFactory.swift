@@ -10,7 +10,7 @@ import QuizEngineX
 
 final class iOSViewControllerFactory: ViewControllerFactory {
 
-    typealias Answers = [(question: Question<String>, answers: [String])]
+    typealias Answers = [(question: Question<String>, answer: [String])]
     
     private let options: [Question<String>: [String]]
     private let correctAnswers: Answers
