@@ -93,7 +93,7 @@ class NavigationControllerRouterTest: XCTestCase {
         XCTAssertTrue(callBackWasFired)
     }
     
-    func test_routeToResults_showsResultControllers() {
+    func test_didCompleteQuiz_showsResultControllers() {
         let viewController = UIViewController()
         let userAnswer = [(singleAnswerQuestion, ["A1"])]
         factory.stub(resultForQuestion: [singleAnswerQuestion], with: viewController)
