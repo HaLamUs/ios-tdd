@@ -41,8 +41,8 @@ class NavigationControllerRouter: Router {
         answer(for: question, completion: answerCallback)
     }
     
-    func didCompleteQuiz(withAnswer answers: [(question: Question<String>, answers: [String])]) {
-        show(factory.resultViewController(for: answers))
+    func didCompleteQuiz(withAnswer answers: [(question: Question<String>, answer: [String])]) {
+        show(factory.resultViewController(for: answers.map { $0 })) // map nó tự động trả về tuple 
     }
     
     func routeTo(result: ResultX<Question<String>, [String]>) {
