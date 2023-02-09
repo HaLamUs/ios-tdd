@@ -22,18 +22,6 @@ class iOSViewControllerFactory: ViewControllerFactory {
         self.correctAnswers = correctAnswers
     }
     
-    private init(for questions: [Question<String>],
-         options: [Question<String>: [String]],
-         correctAnswers: [Question<String>: [String]]
-    ) {
-        self.options = options
-        self.questions = questions
-        self.correctAnswers = questions.map {
-            question in
-            (question, correctAnswers[question] ?? [])
-        }
-    }
-    
     func questionViewController(for question: Question<String>, answerCallback: @escaping ([String]) -> Void) -> UIViewController {
         guard let option = options[question] else {
             fatalError("Could not find options for question \(question)")
