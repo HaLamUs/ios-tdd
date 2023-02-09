@@ -18,7 +18,7 @@ public class Game<Question, Answer, R: Router> {//where R.Question == Question, 
 }
 
 
-@available(*, deprecated)
+@available(*, deprecated, message: "Scoring wont be supported in the future")
 public struct ResultX<Question: Hashable, Answer> {
     public let answers: [Question: Answer]
     public let score: Int
