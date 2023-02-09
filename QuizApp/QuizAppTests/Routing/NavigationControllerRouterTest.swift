@@ -141,9 +141,6 @@ class NavigationControllerRouterTest: XCTestCase {
             return stubbedQuestions[question] ?? UIViewController() // incase you forgot stub (call stub method)
         }
         
-        func resultViewController(for result: ResultX<Question<String>, [String]>) -> UIViewController {
-            UIViewController() // incase you
-        }
     }
 }
  
