@@ -29,12 +29,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let option6 = "Lao"
         let options2 = [option4, option5, option6]
         
-        
         let correctAnswers = [question1: [option3], question2: [option4, option5]]
-        
-        let factory = iOSViewControllerFactory(for: questions,
-                                                  options: [question1: options1, question2: options2],
-                                                  correctAnswers: correctAnswers)
+        let factory = iOSViewControllerFactory(options: [question1: options1, question2: options2],
+                                                  correctAnswers: [(question1, [option3]), (question2, [option4, option5])])
         let navigationController = UINavigationController()
         let router = NavigationControllerRouter(navigationController, factory: factory)
         

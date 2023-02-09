@@ -22,7 +22,7 @@ class iOSViewControllerFactory: ViewControllerFactory {
         self.correctAnswers = correctAnswers
     }
     
-    init(for questions: [Question<String>],
+    private init(for questions: [Question<String>],
          options: [Question<String>: [String]],
          correctAnswers: [Question<String>: [String]]
     ) {
