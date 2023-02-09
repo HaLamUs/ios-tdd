@@ -8,17 +8,19 @@
 import UIKit
 import QuizEngineX
 
-class iOSViewControllerFactory: ViewControllerFactory {
+final class iOSViewControllerFactory: ViewControllerFactory {
 
     typealias Answers = [(question: Question<String>, answers: [String])]
     
-    private let questions: [Question<String>]
     private let options: [Question<String>: [String]]
     private let correctAnswers: Answers
     
+    private var questions: [Question<String>] {
+        correctAnswers.map { $0.question }
+    }
+    
     init(options: [Question<String>: [String]], correctAnswers: Answers) {
         self.options = options
-        self.questions = correctAnswers.map { $0.question }
         self.correctAnswers = correctAnswers
     }
     
