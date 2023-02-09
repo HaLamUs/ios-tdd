@@ -11,7 +11,7 @@ import QuizEngineX
     Rule of thump the Router should be independent from controller
     Solve: Factory - Prototol
  */
-class NavigationControllerRouter: Router {
+class NavigationControllerRouter: Router, QuizDelegate {
     
     private let navigationController: UINavigationController
     private let factory: ViewControllerFactory
