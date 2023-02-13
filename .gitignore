@@ -5,9 +5,13 @@
 ## User settings
 xcuserdata/
 
+Practice/Practice.xcodeproj/project.xcworkspace/xcuserdata/
+
+
 .DS_Store
 
 QuizEngineX/QuizEngineX.xcodeproj/project.xcworkspace/xcuserdata/
+ QuizEngineX/QuizEngineX.xcodeproj/xcuserdata/
 
 ## compatibility with Xcode 8 and earlier (ignoring not required starting Xcode 9)
 *.xcscmblueprint
