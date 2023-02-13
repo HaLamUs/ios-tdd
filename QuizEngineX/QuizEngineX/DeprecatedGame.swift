@@ -8,12 +8,11 @@
 import Foundation
 
 @available(*, deprecated, message: "Use Quiz instead")
-public class Game<Question, Answer, R: Router> {//where R.Question == Question, R.Answer == Answer {
-    // because this private we dont want change the Router type yet
-    let flow: Any//Flow<Question, Answer, R>
+public class Game<Question, Answer, R: Router> {
+    let quiz: Quiz
     
-    init(flow: Any) {//Flow<Question, Answer, R>) {
-        self.flow = flow
+    init(quiz: Quiz) {
+        self.quiz = quiz
     }
 }
 
@@ -31,13 +30,9 @@ public func startGame<Question, Answer: Equatable, R: Router>
                      router: R,
                      correctAnswers:[Question: Answer]) -> Game<Question, Answer, R> where R.Question == Question, R.Answer == Answer
 {
-    let flow = Flow(questions: questions,
-                    delegate: QuizDelegateToRouterAdaper(router: router, correctAnswers))
-    flow.start() // need to hold strong ref, if not it gone in the middle wont assign back to router
-                // flow after start weak self to move next question
-                // GameTest - router.answerCallback("A1") --> null not call the callback
-                // Solve: return BUT we wrap it into diff type SO no one know about it
-    return Game(flow: flow)
+    let adapter = QuizDelegateToRouterAdaper(router: router, correctAnswers)
+    let quiz = Quiz.start(questions: questions, delegate: adapter)
+    return Game(quiz: quiz)
 }
 
 @available(*, deprecated, message: "Remove along with the deprecated Game types") 
