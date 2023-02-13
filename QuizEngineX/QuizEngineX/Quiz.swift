@@ -19,12 +19,8 @@ public final class Quiz {
             delegate: Delegate)
             -> Quiz where Delegate.Answer: Equatable
     {
-        let flow = Flow(questions: questions,
-                        delegate: delegate)
-        flow.start() // need to hold strong ref, if not it gone in the middle wont assign back to router
-                    // flow after start weak self to move next question
-                    // GameTest - router.answerCallback("A1") --> null not call the callback
-                    // Solve: return BUT we wrap it into diff type SO no one know about it
+        let flow = Flow(questions: questions, delegate: delegate)
+        flow.start()
         return Quiz(flow: flow)
     }
 }
