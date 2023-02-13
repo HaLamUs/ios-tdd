@@ -1,5 +1,6 @@
 # TDD extreme programing iOS
 
+[![CI](https://github.com/HaLamUs/ios-tdd/actions/workflows/CI.yml/badge.svg)](https://github.com/HaLamUs/ios-tdd/actions/workflows/CI.yml)
 
 ## Intro
 
