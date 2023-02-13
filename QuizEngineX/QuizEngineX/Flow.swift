@@ -7,8 +7,7 @@
 
 import Foundation
 
-//class Flow<Question, Answer, R: Router> where R.Answer == Answer, R.Question == Question {
-class Flow<Delegate: QuizDelegate> {
+final class Flow<Delegate: QuizDelegate> {
     typealias Question = Delegate.Question
     typealias Answer = Delegate.Answer
     
