@@ -21,6 +21,7 @@ https://www.youtube.com/@EssentialDeveloper
 - iOS 15.0+
 - Xcode 13.0
 
+---
 ## Author
 
 This repo was developed by [@lamha](https://github.com/HaLamUs). 
