@@ -1,6 +1,7 @@
 # TDD extreme programing iOS
 
 [![CI](https://github.com/HaLamUs/ios-tdd/actions/workflows/CI.yml/badge.svg)](https://github.com/HaLamUs/ios-tdd/actions/workflows/CI.yml)
+![GitHub last commit](https://img.shields.io/github/last-commit/HaLamUs/ios-tdd?style=plastic)
 
 ## Intro
 
