@@ -1,8 +1,8 @@
 //
 //  Flow.swift
-//  QuizEngine
+//  fix-the-leak
 //
-//  Created by lamha on 25/10/2022.
+//  Created by lamha on 14/02/2023.
 //
 
 import Foundation
@@ -54,28 +54,3 @@ private extension Array {
         insert(element, at: index)
     }
 }
-
-/*
- Instead using raw [Question]
- We can create our own Type but when you import to other platform
-    need implement de/encrypt
- 
- enum Answer<T> {
-    case correct(T)
-    case incorrect(T)
- }
- 
- protocol Answer {
-    var isCorrect: Bool { get }
- }
- 
- struct StringAnswer {
-    let answer: String
-    let isCorrect: Bool
- }
- 
- struct Question {
-    let isMultipleAnswer: Bool
- }
- 
- */
