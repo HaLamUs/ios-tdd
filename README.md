@@ -20,6 +20,7 @@ https://www.youtube.com/@EssentialDeveloper
 
 - iOS 15.0+
 - Xcode 13.0
+- MacOS Big Sur
 
 ---
 ## Author
