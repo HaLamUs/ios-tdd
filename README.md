@@ -21,7 +21,9 @@ https://www.youtube.com/@EssentialDeveloper
 - Xcode 13.0
 
 ## Author
-Lam Ha
+
+This repo was developed by [@lamha](https://github.com/HaLamUs). 
+Follow or connect with me on [my LinkedIn](https://www.linkedin.com/in/lamhacs). 
 
 ## License
 [MIT licensed.](LICENSE)
