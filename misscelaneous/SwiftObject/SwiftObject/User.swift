@@ -49,14 +49,12 @@ func makeUserObject(firstName: String, lastName: String) -> (setFirstName: (Stri
 
 func makePremiumUserObject(firstName: String, lastName: String) -> (setFirstName: (String) -> Void, fullName: () -> String) {
     
-    var _firstName = firstName
+    let _user = makeUserObject(firstName: firstName, lastName: lastName)
     
     return (
-        setFirstName: { newFirstName in
-            _firstName = newFirstName
-        },
+        setFirstName: _user.setFirstName,
         fullName: {
-            return _firstName + " " + lastName + " @"
+            return _user.fullName() + " @"
         }
     )
 }
