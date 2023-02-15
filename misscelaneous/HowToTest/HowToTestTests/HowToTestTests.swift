@@ -12,8 +12,7 @@ final class TitleViewController: UIViewController {
     
     let titleLabel = UILabel()
     
-    convenience init(title: String) {
-        self.init()
+    func render(title: String) {
         titleLabel.text = title
     }
     
@@ -22,16 +21,9 @@ final class TitleViewController: UIViewController {
 class HowToTestFirst: XCTestCase {
     
     func testViewControllerRendersTile() {
-        // struture of a test
-        let viewController = TitleViewController(title: "a title")
-        
-        // given: the scenario - the set up <-- Second
-        
-        // when: something happen
-        viewController.loadViewIfNeeded()
-        
-        // then: expect - Assert <-- First
-        XCTAssertEqual(viewController.titleLabel.text, "a title")
+        let sut = TitleViewController()
+        sut.render(title: "a title")
+        XCTAssertEqual(sut.titleLabel.text, "a title")
         
     }
 }
