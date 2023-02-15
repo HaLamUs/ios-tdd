@@ -37,11 +37,11 @@ class UserTests: XCTestCase {
     
     // MARK: Helpers
     
-    func makeUser(firstName: String, lastName: String) -> (setFirstName: (String) -> Void, fullName: () -> String) {
+    func makeUser(firstName: String, lastName: String) -> User {
         makeUserObject(firstName: firstName, lastName: lastName)
     }
     
-    func makePremiumUser(firstName: String, lastName: String) -> (setFirstName: (String) -> Void, fullName: () -> String) {
+    func makePremiumUser(firstName: String, lastName: String) -> PremiumUser {
         makePremiumUserObject(firstName: firstName, lastName: lastName)
     }
 }

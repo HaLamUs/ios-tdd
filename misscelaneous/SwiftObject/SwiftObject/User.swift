@@ -7,33 +7,9 @@
 
 import Foundation
 
-class User {
-    
-    private var firstName: String
-    private let lastName: String
-    
-    init(firstName: String, lastName: String) {
-        self.firstName = firstName
-        self.lastName = lastName
-    }
-    
-    func set(firstName: String) {
-        self.firstName = firstName
-    }
-    
-    func fullName() -> String {
-        firstName + " " + lastName
-    }
-}
+typealias User = (setFirstName: (String) -> Void, fullName: () -> String)
 
-class PremiumUser: User {
-    
-    override func fullName() -> String {
-        super.fullName() + " @"
-    }
-}
-
-func makeUserObject(firstName: String, lastName: String) -> (setFirstName: (String) -> Void, fullName: () -> String) {
+func makeUserObject(firstName: String, lastName: String) -> User {
     
     var _firstName = firstName
     
@@ -47,14 +23,16 @@ func makeUserObject(firstName: String, lastName: String) -> (setFirstName: (Stri
     )
 }
 
-func makePremiumUserObject(firstName: String, lastName: String) -> (setFirstName: (String) -> Void, fullName: () -> String) {
+typealias PremiumUser = (setFirstName: (String) -> Void, fullName: () -> String)
+
+func makePremiumUserObject(firstName: String, lastName: String) -> PremiumUser {
     
-    let _user = makeUserObject(firstName: firstName, lastName: lastName)
+    let _super = makeUserObject(firstName: firstName, lastName: lastName)
     
     return (
-        setFirstName: _user.setFirstName,
+        setFirstName: _super.setFirstName,
         fullName: {
-            return _user.fullName() + " @"
+            return _super.fullName() + " @"
         }
     )
 }
