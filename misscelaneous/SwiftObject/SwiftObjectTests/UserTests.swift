@@ -10,8 +10,6 @@ import XCTest
 
 class UserTests: XCTestCase {
 
-    
-    
     func testFullNameIsTheCombinationOfFirstAndLastName() {
         let sut = makeUser(firstName: "Lam", lastName: "Ha")
         XCTAssertEqual(sut.fullName(), "Lam Ha")
@@ -30,8 +28,8 @@ class UserTests: XCTestCase {
     
     func testCanUpdateFirstNameOfAPremiumUser() {
         let sut = makePremiumUser(firstName: "Lam", lastName: "Ha")
-//        sut.setFirstName("Quang")
-        sut.0("Quang")
+        sut.setFirstName("Quang")
+//        sut.0("Quang")
         XCTAssertEqual(sut.fullName(), "Quang Ha @")
     }
     

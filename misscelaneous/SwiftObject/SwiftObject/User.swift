@@ -7,13 +7,16 @@
 
 import Foundation
 
-typealias User = (setFirstName: (String) -> Void, fullName: () -> String)
+struct User {
+    let setFirstName: (String) -> Void
+    let fullName: () -> String
+}
 
 func makeUserObject(firstName: String, lastName: String) -> User {
     
     var _firstName = firstName
     
-    return (
+    return User(
         setFirstName: { newFirstName in
             _firstName = newFirstName
         },
@@ -23,13 +26,16 @@ func makeUserObject(firstName: String, lastName: String) -> User {
     )
 }
 
-typealias PremiumUser = (setFirstName: (String) -> Void, fullName: () -> String)
+struct PremiumUser  {
+    let setFirstName: (String) -> Void
+    let fullName: () -> String
+}
 
 func makePremiumUserObject(firstName: String, lastName: String) -> PremiumUser {
     
     let _super = makeUserObject(firstName: firstName, lastName: lastName)
     
-    return (
+    return PremiumUser(
         setFirstName: _super.setFirstName,
         fullName: {
             return _super.fullName() + " @"
