@@ -32,3 +32,31 @@ class PremiumUser: User {
         super.fullName() + " @"
     }
 }
+
+func makeUserObject(firstName: String, lastName: String) -> (setFirstName: (String) -> Void, fullName: () -> String) {
+    
+    var _firstName = firstName
+    
+    return (
+        setFirstName: { newFirstName in
+            _firstName = newFirstName
+        },
+        fullName: {
+            return _firstName + " " + lastName
+        }
+    )
+}
+
+func makePremiumUserObject(firstName: String, lastName: String) -> (setFirstName: (String) -> Void, fullName: () -> String) {
+    
+    var _firstName = firstName
+    
+    return (
+        setFirstName: { newFirstName in
+            _firstName = newFirstName
+        },
+        fullName: {
+            return _firstName + " " + lastName + " @"
+        }
+    )
+}

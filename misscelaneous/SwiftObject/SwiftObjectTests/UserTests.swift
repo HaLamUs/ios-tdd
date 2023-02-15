@@ -19,7 +19,7 @@ class UserTests: XCTestCase {
     
     func testCanUpdateTheFirstName() {
         let sut = makeUser(firstName: "Lam", lastName: "Ha")
-        sut.set(firstName: "Quang")
+        sut.setFirstName("Quang")
         XCTAssertEqual(sut.fullName(), "Quang Ha")
     }
     
@@ -30,19 +30,21 @@ class UserTests: XCTestCase {
     
     func testCanUpdateFirstNameOfAPremiumUser() {
         let sut = makePremiumUser(firstName: "Lam", lastName: "Ha")
-        sut.set(firstName: "Quang")
+//        sut.setFirstName("Quang")
+        sut.0("Quang")
         XCTAssertEqual(sut.fullName(), "Quang Ha @")
     }
     
     // MARK: Helpers
     
-    func makeUser(firstName: String, lastName: String) -> User {
-        User(firstName: firstName, lastName: lastName)
+    func makeUser(firstName: String, lastName: String) -> (setFirstName: (String) -> Void, fullName: () -> String) {
+        makeUserObject(firstName: firstName, lastName: lastName)
     }
     
-    func makePremiumUser(firstName: String, lastName: String) -> PremiumUser {
-        PremiumUser(firstName: firstName, lastName: lastName)
+    func makePremiumUser(firstName: String, lastName: String) -> (setFirstName: (String) -> Void, fullName: () -> String) {
+        makePremiumUserObject(firstName: firstName, lastName: lastName)
     }
 }
+
 
 
