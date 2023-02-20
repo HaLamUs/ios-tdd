@@ -8,18 +8,23 @@
 import Foundation
 import UIKit
 
-struct LoggedinUser { }
-
-struct FeedItem { }
-
+// API Module
 class ApiClient {
     static var shared = ApiClient()
     
-    func login(completion: (LoggedinUser) -> Void) {}
-    func loadFeed(completion: ([FeedItem]) -> Void) {}
+    func excute(_ URL: URLRequest, completion: (LoggedinUser) -> Void) {}
+
+    
 }
 
-class MockApiClient: ApiClient { }
+
+// Login Module
+
+struct LoggedinUser { }
+
+extension ApiClient {
+    func login(completion: (LoggedinUser) -> Void) {}
+}
 
 class LoginViewController: UIViewController {
     
@@ -32,6 +37,14 @@ class LoginViewController: UIViewController {
         }
     }
     
+}
+
+// Feed Module
+
+struct FeedItem { }
+
+extension ApiClient {
+    func loadFeed(completion: ([FeedItem]) -> Void) {}
 }
 
 class FeedViewController: UIViewController {
