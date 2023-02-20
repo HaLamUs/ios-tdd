@@ -23,14 +23,28 @@ class ApiClient {
 
 let client = ApiClient.instance
 
+class MockApiClient: ApiClient {
+    
+}
+
 class LoginViewController: UIViewController {
     
-    // can not test if use directly
+    // inject remeber using var to inject
+    var api = ApiClient.instance
+    
     func didTapLoginButton() {
-        ApiClient.instance.login {
+        api.login {
             user in
             // show next screen
         }
     }
+    
+//    // can not test if use directly
+//    func didTapLoginButton() {
+//        ApiClient.instance.login {
+//            user in
+//            // show next screen
+//        }
+//    }
     
 }
