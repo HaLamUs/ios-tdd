@@ -8,43 +8,41 @@
 import Foundation
 import UIKit
 
-struct LoggedinUser {
-    
-}
+struct LoggedinUser { }
+
+struct FeedItem { }
 
 class ApiClient {
-    static let instance = ApiClient()
-    
-    private init() {}
+    static var shared = ApiClient()
     
     func login(completion: (LoggedinUser) -> Void) {}
+    func loadFeed(completion: ([FeedItem]) -> Void) {}
 }
 
-
-let client = ApiClient.instance
-
-class MockApiClient: ApiClient {
-    
-}
+class MockApiClient: ApiClient { }
 
 class LoginViewController: UIViewController {
     
-    // inject remeber using var to inject
-    var api = ApiClient.instance
+    var api = ApiClient.shared
     
     func didTapLoginButton() {
         api.login {
             user in
-            // show next screen
+            // show feed screen
         }
     }
     
-//    // can not test if use directly
-//    func didTapLoginButton() {
-//        ApiClient.instance.login {
-//            user in
-//            // show next screen
-//        }
-//    }
+}
+
+class FeedViewController: UIViewController {
+    
+    var api = ApiClient.shared
+    
+    func didTapLoginButton() {
+        api.loadFeed {
+            loadedItems in
+            // show next screen
+        }
+    }
     
 }
