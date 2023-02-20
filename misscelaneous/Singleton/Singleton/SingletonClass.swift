@@ -8,13 +8,20 @@
 import Foundation
 import UIKit
 
+// Main module
+extension ApiClient {
+    func login(completion: (LoggedinUser) -> Void) {}
+}
+
+extension ApiClient {
+    func loadFeed(completion: ([FeedItem]) -> Void) {}
+}
+
 // API Module
 class ApiClient {
     static var shared = ApiClient()
     
     func excute(_ URL: URLRequest, completion: (LoggedinUser) -> Void) {}
-
-    
 }
 
 
@@ -22,16 +29,12 @@ class ApiClient {
 
 struct LoggedinUser { }
 
-extension ApiClient {
-    func login(completion: (LoggedinUser) -> Void) {}
-}
-
 class LoginViewController: UIViewController {
     
-    var api = ApiClient.shared
+    var login: (((LoggedinUser) -> Void) -> Void)?
     
     func didTapLoginButton() {
-        api.login {
+        login? {
             user in
             // show feed screen
         }
@@ -40,19 +43,21 @@ class LoginViewController: UIViewController {
 }
 
 // Feed Module
+// Now feed module INDEpendently
 
 struct FeedItem { }
 
-extension ApiClient {
-    func loadFeed(completion: ([FeedItem]) -> Void) {}
-}
-
-class FeedViewController: UIViewController {
+class FeedService {
     
-    var api = ApiClient.shared
+    let loadFeed: ((([FeedItem]) -> Void) -> Void)
     
-    func didTapLoginButton() {
-        api.loadFeed {
+    // force initializer
+    init(loadFeed: @escaping ((([FeedItem]) -> Void) -> Void)) {
+        self.loadFeed = loadFeed
+    }
+    
+    func load() {
+        loadFeed {
             loadedItems in
             // show next screen
         }
