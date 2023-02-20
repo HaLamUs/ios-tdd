@@ -8,15 +8,10 @@
 import Foundation
 
 class ApiClient {
-    
-    private static let instance = ApiClient()
-    
-    static func getInstance() -> ApiClient {
-        instance
-    }
+    static let instance = ApiClient()
     
     private init() {}
 }
 
 
-let client = ApiClient.getInstance()
+let client = ApiClient.instance
