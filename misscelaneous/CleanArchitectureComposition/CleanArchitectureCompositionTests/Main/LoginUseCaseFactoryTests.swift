@@ -16,9 +16,15 @@ class LoginUseCaseFactoryTests: XCTestCase {
         let composer = useCase.output as? LoginUseCaseOutputComposer
         XCTAssertNotNil(composer)
         XCTAssertEqual(composer?.outputs.count, 3)
-        XCTAssertEqual(composer?.outputs.filter { $0 is LoginPresenter }.count, 1)
-        XCTAssertEqual(composer?.outputs.filter { $0 is CrashlyticsLoginTracker }.count, 1)
-        XCTAssertEqual(composer?.outputs.filter { $0 is FirebaseAnalyticsLoginTracker }.count, 1)
+        XCTAssertEqual(composer?.count(ofType: LoginPresenter.self), 1)
+        XCTAssertEqual(composer?.count(ofType: CrashlyticsLoginTracker.self), 1)
+        XCTAssertEqual(composer?.count(ofType: FirebaseAnalyticsLoginTracker.self), 1)
     }
 
+}
+
+private extension LoginUseCaseOutputComposer {
+    func count<T>(ofType: T.Type) -> Int {
+        outputs.filter { $0 is T }.count
+    }
 }

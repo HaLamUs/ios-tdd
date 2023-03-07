@@ -104,16 +104,13 @@
 		B8E8273729B7871A00C99D78 /* CleanArchitectureComposition */ = {
 			isa = PBXGroup;
 			children = (
-				B8E8276229B7875500C99D78 /* LoginUseCase.swift */,
-				B8E8276429B7890B00C99D78 /* LoginPresenter.swift */,
-				B8E8273829B7871A00C99D78 /* CleanArchitectureCompositionApp.swift */,
-				B8E8276629B789C200C99D78 /* CrashlyticsLoginTracker.swift */,
-				B8E8276829B78A2400C99D78 /* FirebaseAnalyticsLoginTracker.swift */,
+				B8E8277629B79C0B00C99D78 /* Business Logic */,
+				B8E8277729B79C1A00C99D78 /* Presenter */,
+				B8E8277829B79C2600C99D78 /* Analytics */,
+				B8E8277929B79C4400C99D78 /* Main */,
 				B8E8273A29B7871A00C99D78 /* ContentView.swift */,
 				B8E8273C29B7871B00C99D78 /* Assets.xcassets */,
 				B8E8273E29B7871B00C99D78 /* Preview Content */,
-				B8E8276F29B78EAE00C99D78 /* LoginUseCaseOutputComposer.swift */,
-				B8E8277429B7964100C99D78 /* LoginUseCaseFactory.swift */,
 			);
 			path = CleanArchitectureComposition;
 			sourceTree = "<group>";
@@ -129,11 +126,54 @@
 		B8E8274829B7871B00C99D78 /* CleanArchitectureCompositionTests */ = {
 			isa = PBXGroup;
 			children = (
-				B8E8276D29B78E5B00C99D78 /* LoginUseCaseOutputComposerTests.swift */,
-				B8E8277229B7960000C99D78 /* LoginUseCaseFactoryTests.swift */,
+				B8E8277A29B79C9500C99D78 /* Main */,
 				B8E8277129B7937700C99D78 /* CleanArchitectureCompositionTests-Bridging-Header.h */,
 			);
 			path = CleanArchitectureCompositionTests;
+			sourceTree = "<group>";
+		};
+		B8E8277629B79C0B00C99D78 /* Business Logic */ = {
+			isa = PBXGroup;
+			children = (
+				B8E8276229B7875500C99D78 /* LoginUseCase.swift */,
+			);
+			path = "Business Logic";
+			sourceTree = "<group>";
+		};
+		B8E8277729B79C1A00C99D78 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				B8E8276429B7890B00C99D78 /* LoginPresenter.swift */,
+				B8E8273829B7871A00C99D78 /* CleanArchitectureCompositionApp.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		B8E8277829B79C2600C99D78 /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				B8E8276629B789C200C99D78 /* CrashlyticsLoginTracker.swift */,
+				B8E8276829B78A2400C99D78 /* FirebaseAnalyticsLoginTracker.swift */,
+			);
+			path = Analytics;
+			sourceTree = "<group>";
+		};
+		B8E8277929B79C4400C99D78 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				B8E8276F29B78EAE00C99D78 /* LoginUseCaseOutputComposer.swift */,
+				B8E8277429B7964100C99D78 /* LoginUseCaseFactory.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		B8E8277A29B79C9500C99D78 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				B8E8276D29B78E5B00C99D78 /* LoginUseCaseOutputComposerTests.swift */,
+				B8E8277229B7960000C99D78 /* LoginUseCaseFactoryTests.swift */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
