@@ -17,6 +17,8 @@
 		B8E8276929B78A2400C99D78 /* FirebaseAnalyticsLoginTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E8276829B78A2400C99D78 /* FirebaseAnalyticsLoginTracker.swift */; };
 		B8E8276E29B78E5B00C99D78 /* LoginUseCaseOutputComposerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E8276D29B78E5B00C99D78 /* LoginUseCaseOutputComposerTests.swift */; };
 		B8E8277029B78EAE00C99D78 /* LoginUseCaseOutputComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E8276F29B78EAE00C99D78 /* LoginUseCaseOutputComposer.swift */; };
+		B8E8277329B7960000C99D78 /* LoginUseCaseFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E8277229B7960000C99D78 /* LoginUseCaseFactoryTests.swift */; };
+		B8E8277529B7964100C99D78 /* LoginUseCaseFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E8277429B7964100C99D78 /* LoginUseCaseFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,8 @@
 		B8E8276D29B78E5B00C99D78 /* LoginUseCaseOutputComposerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUseCaseOutputComposerTests.swift; sourceTree = "<group>"; };
 		B8E8276F29B78EAE00C99D78 /* LoginUseCaseOutputComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUseCaseOutputComposer.swift; sourceTree = "<group>"; };
 		B8E8277129B7937700C99D78 /* CleanArchitectureCompositionTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CleanArchitectureCompositionTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		B8E8277229B7960000C99D78 /* LoginUseCaseFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUseCaseFactoryTests.swift; sourceTree = "<group>"; };
+		B8E8277429B7964100C99D78 /* LoginUseCaseFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUseCaseFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +113,7 @@
 				B8E8273C29B7871B00C99D78 /* Assets.xcassets */,
 				B8E8273E29B7871B00C99D78 /* Preview Content */,
 				B8E8276F29B78EAE00C99D78 /* LoginUseCaseOutputComposer.swift */,
+				B8E8277429B7964100C99D78 /* LoginUseCaseFactory.swift */,
 			);
 			path = CleanArchitectureComposition;
 			sourceTree = "<group>";
@@ -125,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				B8E8276D29B78E5B00C99D78 /* LoginUseCaseOutputComposerTests.swift */,
+				B8E8277229B7960000C99D78 /* LoginUseCaseFactoryTests.swift */,
 				B8E8277129B7937700C99D78 /* CleanArchitectureCompositionTests-Bridging-Header.h */,
 			);
 			path = CleanArchitectureCompositionTests;
@@ -267,6 +273,7 @@
 				B8E8276929B78A2400C99D78 /* FirebaseAnalyticsLoginTracker.swift in Sources */,
 				B8E8273B29B7871A00C99D78 /* ContentView.swift in Sources */,
 				B8E8273929B7871A00C99D78 /* CleanArchitectureCompositionApp.swift in Sources */,
+				B8E8277529B7964100C99D78 /* LoginUseCaseFactory.swift in Sources */,
 				B8E8276329B7875500C99D78 /* LoginUseCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -275,6 +282,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8E8277329B7960000C99D78 /* LoginUseCaseFactoryTests.swift in Sources */,
 				B8E8276E29B78E5B00C99D78 /* LoginUseCaseOutputComposerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
