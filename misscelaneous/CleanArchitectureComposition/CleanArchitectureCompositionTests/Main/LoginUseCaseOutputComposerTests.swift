@@ -10,6 +10,27 @@ import XCTest
 
 class LoginUseCaseOutputComposerTests: XCTestCase {
     
+    func test_useGenericFunction() {
+        /*
+         We no longer using
+            - class LoginPresenter
+            - class CrashlyticsLoginTracker
+            - class FirebaseAnalyticsLoginTracker
+         */
+        func logEventOnCrashlytics(event: String) {
+            print("\(event) logEventOnCrashlytics")
+        }
+        func logEventOnFirebase(event: String) {
+            print("\(event) logEventOnFirebase")
+        }
+        
+        let logEventOnCrashlyticsAndFirebase = compose([logEventOnCrashlytics, logEventOnFirebase])
+        
+        
+        logEventOnCrashlyticsAndFirebase("Hello")
+        
+    }
+    
     func test_closureKnowledge() {
         /*
          1. Init closure
