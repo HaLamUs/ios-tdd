@@ -18,13 +18,13 @@ protocol LoginUseCaseOutput {
 // Normal way, using concrete type
 class LoginUseCase {
     
-    let crashlyticsTracker: CrashlyticsLoginTracker
-    let firebaseTracker: FirebaseAnalyticsLoginTracker
-    let loginPresenter: LoginPresenter
+    let crashlyticsTracker: LoginUseCaseOutput
+    let firebaseTracker: LoginUseCaseOutput
+    let loginPresenter: LoginUseCaseOutput
     
-    init(crashlyticsTracker: CrashlyticsLoginTracker,
-         firebaseTracker: FirebaseAnalyticsLoginTracker,
-         loginPresenter: LoginPresenter) {
+    init(crashlyticsTracker: LoginUseCaseOutput,
+         firebaseTracker: LoginUseCaseOutput,
+         loginPresenter: LoginUseCaseOutput) {
         self.crashlyticsTracker = crashlyticsTracker
         self.firebaseTracker = firebaseTracker
         self.loginPresenter = loginPresenter
