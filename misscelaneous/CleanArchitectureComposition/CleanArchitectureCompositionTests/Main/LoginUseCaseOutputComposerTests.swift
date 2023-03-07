@@ -17,17 +17,23 @@ class LoginUseCaseOutputComposerTests: XCTestCase {
             - class CrashlyticsLoginTracker
             - class FirebaseAnalyticsLoginTracker
          */
-        func logEventOnCrashlytics(event: String) {
+        enum Event {
+            case crashlytics
+            case firebase
+        }
+        
+        func logEventOnCrashlytics(event: Event) {
             print("\(event) logEventOnCrashlytics")
         }
-        func logEventOnFirebase(event: String) {
+        
+        func logEventOnFirebase(event: Event) {
             print("\(event) logEventOnFirebase")
         }
         
         let logEventOnCrashlyticsAndFirebase = compose([logEventOnCrashlytics, logEventOnFirebase])
         
-        
-        logEventOnCrashlyticsAndFirebase("Hello")
+        // pass this to LoginUseCase
+        logEventOnCrashlyticsAndFirebase(.crashlytics)
         
     }
     
