@@ -62,6 +62,10 @@ class LoginUseCaseOutputComposerTests: XCTestCase {
         
         // just forget this
         let out3 = { (value: LoginPresenter) in value.loginSucceeded() }
+        // T here is LoginPresenter
+        // that is why when call we need to pass it
+        // value.loginSucceeded() we can change Ex: print("Hello 1")
+        // To do "Hello 1", "Hello 2" using func instead 
         let temp3 = compose([out3])
         temp3(LoginPresenter())
 
