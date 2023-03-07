@@ -12,6 +12,9 @@
 		B8E8273D29B7871B00C99D78 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8E8273C29B7871B00C99D78 /* Assets.xcassets */; };
 		B8E8274029B7871B00C99D78 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8E8273F29B7871B00C99D78 /* Preview Assets.xcassets */; };
 		B8E8276329B7875500C99D78 /* LoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E8276229B7875500C99D78 /* LoginUseCase.swift */; };
+		B8E8276529B7890B00C99D78 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E8276429B7890B00C99D78 /* LoginPresenter.swift */; };
+		B8E8276729B789C200C99D78 /* CrashlyticsLoginTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E8276629B789C200C99D78 /* CrashlyticsLoginTracker.swift */; };
+		B8E8276929B78A2400C99D78 /* FirebaseAnalyticsLoginTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E8276829B78A2400C99D78 /* FirebaseAnalyticsLoginTracker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +43,9 @@
 		B8E8274529B7871B00C99D78 /* CleanArchitectureCompositionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CleanArchitectureCompositionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8E8274F29B7871B00C99D78 /* CleanArchitectureCompositionUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CleanArchitectureCompositionUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8E8276229B7875500C99D78 /* LoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUseCase.swift; sourceTree = "<group>"; };
+		B8E8276429B7890B00C99D78 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
+		B8E8276629B789C200C99D78 /* CrashlyticsLoginTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrashlyticsLoginTracker.swift; sourceTree = "<group>"; };
+		B8E8276829B78A2400C99D78 /* FirebaseAnalyticsLoginTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAnalyticsLoginTracker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,7 +96,10 @@
 			isa = PBXGroup;
 			children = (
 				B8E8276229B7875500C99D78 /* LoginUseCase.swift */,
+				B8E8276429B7890B00C99D78 /* LoginPresenter.swift */,
 				B8E8273829B7871A00C99D78 /* CleanArchitectureCompositionApp.swift */,
+				B8E8276629B789C200C99D78 /* CrashlyticsLoginTracker.swift */,
+				B8E8276829B78A2400C99D78 /* FirebaseAnalyticsLoginTracker.swift */,
 				B8E8273A29B7871A00C99D78 /* ContentView.swift */,
 				B8E8273C29B7871B00C99D78 /* Assets.xcassets */,
 				B8E8273E29B7871B00C99D78 /* Preview Content */,
@@ -243,6 +252,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8E8276729B789C200C99D78 /* CrashlyticsLoginTracker.swift in Sources */,
+				B8E8276529B7890B00C99D78 /* LoginPresenter.swift in Sources */,
+				B8E8276929B78A2400C99D78 /* FirebaseAnalyticsLoginTracker.swift in Sources */,
 				B8E8273B29B7871A00C99D78 /* ContentView.swift in Sources */,
 				B8E8273929B7871A00C99D78 /* CleanArchitectureCompositionApp.swift in Sources */,
 				B8E8276329B7875500C99D78 /* LoginUseCase.swift in Sources */,
