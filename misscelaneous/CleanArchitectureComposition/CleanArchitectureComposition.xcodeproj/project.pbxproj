@@ -15,6 +15,8 @@
 		B8E8276529B7890B00C99D78 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E8276429B7890B00C99D78 /* LoginPresenter.swift */; };
 		B8E8276729B789C200C99D78 /* CrashlyticsLoginTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E8276629B789C200C99D78 /* CrashlyticsLoginTracker.swift */; };
 		B8E8276929B78A2400C99D78 /* FirebaseAnalyticsLoginTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E8276829B78A2400C99D78 /* FirebaseAnalyticsLoginTracker.swift */; };
+		B8E8276E29B78E5B00C99D78 /* LoginUseCaseOutputComposerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E8276D29B78E5B00C99D78 /* LoginUseCaseOutputComposerTests.swift */; };
+		B8E8277029B78EAE00C99D78 /* LoginUseCaseOutputComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E8276F29B78EAE00C99D78 /* LoginUseCaseOutputComposer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +48,9 @@
 		B8E8276429B7890B00C99D78 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
 		B8E8276629B789C200C99D78 /* CrashlyticsLoginTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrashlyticsLoginTracker.swift; sourceTree = "<group>"; };
 		B8E8276829B78A2400C99D78 /* FirebaseAnalyticsLoginTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAnalyticsLoginTracker.swift; sourceTree = "<group>"; };
+		B8E8276D29B78E5B00C99D78 /* LoginUseCaseOutputComposerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUseCaseOutputComposerTests.swift; sourceTree = "<group>"; };
+		B8E8276F29B78EAE00C99D78 /* LoginUseCaseOutputComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUseCaseOutputComposer.swift; sourceTree = "<group>"; };
+		B8E8277129B7937700C99D78 /* CleanArchitectureCompositionTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CleanArchitectureCompositionTests-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +108,7 @@
 				B8E8273A29B7871A00C99D78 /* ContentView.swift */,
 				B8E8273C29B7871B00C99D78 /* Assets.xcassets */,
 				B8E8273E29B7871B00C99D78 /* Preview Content */,
+				B8E8276F29B78EAE00C99D78 /* LoginUseCaseOutputComposer.swift */,
 			);
 			path = CleanArchitectureComposition;
 			sourceTree = "<group>";
@@ -118,6 +124,8 @@
 		B8E8274829B7871B00C99D78 /* CleanArchitectureCompositionTests */ = {
 			isa = PBXGroup;
 			children = (
+				B8E8276D29B78E5B00C99D78 /* LoginUseCaseOutputComposerTests.swift */,
+				B8E8277129B7937700C99D78 /* CleanArchitectureCompositionTests-Bridging-Header.h */,
 			);
 			path = CleanArchitectureCompositionTests;
 			sourceTree = "<group>";
@@ -193,6 +201,7 @@
 					};
 					B8E8274429B7871B00C99D78 = {
 						CreatedOnToolsVersion = 13.0;
+						LastSwiftMigration = 1300;
 						TestTargetID = B8E8273429B7871A00C99D78;
 					};
 					B8E8274E29B7871B00C99D78 = {
@@ -253,6 +262,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B8E8276729B789C200C99D78 /* CrashlyticsLoginTracker.swift in Sources */,
+				B8E8277029B78EAE00C99D78 /* LoginUseCaseOutputComposer.swift in Sources */,
 				B8E8276529B7890B00C99D78 /* LoginPresenter.swift in Sources */,
 				B8E8276929B78A2400C99D78 /* FirebaseAnalyticsLoginTracker.swift in Sources */,
 				B8E8273B29B7871A00C99D78 /* ContentView.swift in Sources */,
@@ -265,6 +275,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8E8276E29B78E5B00C99D78 /* LoginUseCaseOutputComposerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,6 +442,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "lh-ltd.CleanArchitectureComposition";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_PRECOMPILE_BRIDGING_HEADER = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -460,6 +472,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "lh-ltd.CleanArchitectureComposition";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_PRECOMPILE_BRIDGING_HEADER = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -470,6 +483,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -483,6 +497,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "lh-ltd.CleanArchitectureCompositionTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "CleanArchitectureCompositionTests/CleanArchitectureCompositionTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CleanArchitectureComposition.app/CleanArchitectureComposition";
@@ -494,6 +510,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -507,6 +524,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "lh-ltd.CleanArchitectureCompositionTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "CleanArchitectureCompositionTests/CleanArchitectureCompositionTests-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CleanArchitectureComposition.app/CleanArchitectureComposition";
