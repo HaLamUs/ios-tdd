@@ -15,10 +15,10 @@ final class LoginUseCaseOutputComposer: LoginUseCaseOutput {
     }
     
     func loginSucceeded() {
-        outputs.first?.loginSucceeded()
+        outputs.forEach { $0.loginSucceeded() }
     }
     
     func loginFailed() {
-        outputs.first?.loginFailed()
+        outputs.forEach { $0.loginFailed() }
     }
 }
