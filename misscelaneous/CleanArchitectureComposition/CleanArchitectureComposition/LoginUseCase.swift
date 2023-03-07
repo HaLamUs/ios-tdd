@@ -17,22 +17,16 @@ protocol LoginUseCaseOutput {
 
 // Normal way, using concrete type
 class LoginUseCase {
+    let outputs: [LoginUseCaseOutput]
     
-    let crashlyticsTracker: LoginUseCaseOutput
-    let firebaseTracker: LoginUseCaseOutput
-    let loginPresenter: LoginUseCaseOutput
-    
-    init(crashlyticsTracker: LoginUseCaseOutput,
-         firebaseTracker: LoginUseCaseOutput,
-         loginPresenter: LoginUseCaseOutput) {
-        self.crashlyticsTracker = crashlyticsTracker
-        self.firebaseTracker = firebaseTracker
-        self.loginPresenter = loginPresenter
+    init(outputs: [LoginUseCaseOutput]) {
+        self.outputs = outputs
     }
     
     func login(name: String, password: String) {
-        crashlyticsTracker.loginSucceeded()
-        firebaseTracker.loginSucceeded()
-        loginPresenter.loginSucceeded()
+        // if succeed
+        outputs.forEach { $0.loginSucceeded() }
+        // else 
+        outputs.forEach { $0.loginFailed() }
     }
 }
