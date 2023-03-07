@@ -7,6 +7,7 @@
 
 import Foundation
 
+// 1. Composing using class
 final class LoginUseCaseOutputComposer: LoginUseCaseOutput {
     
     var outputs: [LoginUseCaseOutput]
@@ -20,5 +21,43 @@ final class LoginUseCaseOutputComposer: LoginUseCaseOutput {
     
     func loginFailed() {
         outputs.forEach { $0.loginFailed() }
+    }
+}
+
+// 2. Composing using function
+/*
+ Input: array of func
+ Output: func
+ return all the function in the array with the given value
+ 
+ */
+
+func compose<T>(_ outputs: [(T) -> Void]) -> (T) -> Void {
+    return {
+        value in
+        outputs.forEach { $0(value) }
+    }
+}
+
+
+// Below is the demo
+func compose3(_ outputs: [() -> Void]) -> () -> Void {
+    return {
+        outputs.forEach { $0() }
+    }
+}
+
+func compose4(_ outputs: [(String) -> Void]) -> (String) -> Void {
+    return {
+        value in
+        outputs.forEach { $0(value) }
+        // $0 belongs to outputs
+    }
+}
+
+func compose2() -> (String) -> Void {
+    return {
+        value in
+        print("\n \n \n This is the value \(value) \n \n \n")
     }
 }

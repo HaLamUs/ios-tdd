@@ -10,6 +10,7 @@ import Foundation
 final class LoginPresenter: LoginUseCaseOutput {
     
     func loginSucceeded() {
+        print("\n \n \nloginSucceeded from LoginPresenter \n \n \n")
         // create welcome view model and pass it to the view controller
     }
     
