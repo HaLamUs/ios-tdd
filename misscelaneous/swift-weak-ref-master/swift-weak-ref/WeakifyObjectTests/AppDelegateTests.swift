@@ -12,7 +12,7 @@ class AppDelegateTests: XCTestCase {
 	override func tearDown() {
 		super.tearDown()
 		
-//		assertNoMemoryLeaks()
+		assertNoMemoryLeaks()
 	}
 	
 	private func assertNoMemoryLeaks() {
