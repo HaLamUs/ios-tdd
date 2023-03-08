@@ -35,6 +35,7 @@ class AppDelegateTests: XCTestCase {
 		let vc = makeWeatherViewController()
         let sut = makeSUT(withRoot: vc)
 		
+        // after this line, the reloadData not nil which mean it was set with Usecase
 		_ = sut.application(.shared, didFinishLaunchingWithOptions: [:])
 		
 		let initialLabelValue = vc.label.text
