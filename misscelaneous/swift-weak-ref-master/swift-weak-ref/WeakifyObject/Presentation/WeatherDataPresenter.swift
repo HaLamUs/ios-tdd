@@ -8,12 +8,12 @@ struct WeatherViewModel: Equatable {
 	let temperature: String
 }
 
-protocol WeatherDataPresenterOutput: class {
+protocol WeatherDataPresenterOutput {
 	func present(_ weather: WeatherViewModel)
 }
 
 final class WeatherDataPresenter: FetchWeatherUseCaseOutput {
-	weak var output: WeatherDataPresenterOutput?
+	let output: WeatherDataPresenterOutput
 	private let converter: MeasurementFormatter
 	
 	init(output: WeatherDataPresenterOutput, locale: Locale = .current) {
@@ -23,7 +23,7 @@ final class WeatherDataPresenter: FetchWeatherUseCaseOutput {
 	}
 	
 	func didFetch(_ weather: WeatherData) {
-		output?.present(WeatherViewModel(
+		output.present(WeatherViewModel(
 			temperature: converter.string(
 				from: weather.temperature)))
 	}
