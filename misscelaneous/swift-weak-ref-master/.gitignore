@@ -1,28 +1,15 @@
+# Created by https://www.gitignore.io/api/swift,xcode
+
+### Swift ###
 # Xcode
 #
 # gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
 
-## User settings
-xcuserdata/
-
-CleanArchitectureComposition/CleanArchitectureComposition.xcodeproj/project.xcworkspace/xcuserdata/
-Practice/Practice.xcodeproj/project.xcworkspace/xcuserdata/
-swift-weak-ref-master/swift-weak-ref/WeakifyObject.xcodeproj/project.xcworkspace/xcuserdata/
-
-
-.DS_Store
-
-QuizEngineX/QuizEngineX.xcodeproj/project.xcworkspace/xcuserdata/
- QuizEngineX/QuizEngineX.xcodeproj/xcuserdata/
-
-## compatibility with Xcode 8 and earlier (ignoring not required starting Xcode 9)
-*.xcscmblueprint
-*.xccheckout
-
-## compatibility with Xcode 3 and earlier (ignoring not required starting Xcode 4)
+## Build generated
 build/
 DerivedData/
-*.moved-aside
+
+## Various settings
 *.pbxuser
 !default.pbxuser
 *.mode1v3
@@ -31,11 +18,15 @@ DerivedData/
 !default.mode2v3
 *.perspectivev3
 !default.perspectivev3
+xcuserdata/
+
+## Other
+*.moved-aside
+*.xccheckout
+*.xcscmblueprint
 
 ## Obj-C/Swift specific
 *.hmap
-
-## App packaging
 *.ipa
 *.dSYM.zip
 *.dSYM
@@ -50,12 +41,6 @@ playground.xcworkspace
 # Packages/
 # Package.pins
 # Package.resolved
-# *.xcodeproj
-#
-# Xcode automatically generates this directory with a .xcworkspacedata file and xcuserdata
-# hence it is not needed unless you have added a package configuration file to your project
-# .swiftpm
-
 .build/
 
 # CocoaPods
@@ -74,16 +59,12 @@ playground.xcworkspace
 # Add this line if you want to avoid checking in source code from Carthage dependencies.
 # Carthage/Checkouts
 
-Carthage/Build/
-
-# Accio dependency management
-Dependencies/
-.accio/
+Carthage/Build
 
 # fastlane
 #
-# It is recommended to not store the screenshots in the git repo.
-# Instead, use fastlane to re-generate the screenshots whenever they are needed.
+# It is recommended to not store the screenshots in the git repo. Instead, use fastlane to re-generate the
+# screenshots whenever they are needed.
 # For more information about the recommended setup visit:
 # https://docs.fastlane.tools/best-practices/source-control/#source-control
 
@@ -91,3 +72,23 @@ fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots/**/*.png
 fastlane/test_output
+
+### Xcode ###
+# Xcode
+#
+# gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
+
+## User settings
+
+## compatibility with Xcode 8 and earlier (ignoring not required starting Xcode 9)
+
+## compatibility with Xcode 3 and earlier (ignoring not required starting Xcode 4)
+
+### Xcode Patch ###
+*.xcodeproj/*
+!*.xcodeproj/project.pbxproj
+!*.xcodeproj/xcshareddata/
+!*.xcworkspace/contents.xcworkspacedata
+/*.gcno
+
+# End of https://www.gitignore.io/api/swift,xcode
