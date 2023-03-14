@@ -41,7 +41,7 @@ class AppDelegateTests: XCTestCase {
 		let initialLabelValue = vc.label.text
 		
 		vc.reloadData?()
-		
+		// nếu object?.present(weather) thiếu hoặc quên thì cái này fail 
 		XCTAssertNotEqual(vc.label.text, initialLabelValue)
     }
 	

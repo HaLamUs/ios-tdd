@@ -19,6 +19,7 @@ final class FetchWeatherUseCase {
 		self.output = output
 	}
 	
+    // maybe we call API instead of random
 	func fetch() {
 		let temperature = Double(arc4random_uniform(21) + 15) // random between 15 - 35
 		output.didFetch(WeatherData(temperature: Measurement(value: temperature, unit: .celsius)))
