@@ -11,11 +11,3 @@ public protocol Service {
     func load(completion: @escaping (String) -> ())
 }
 
-class ServiceX: Service {
-    func load(completion: @escaping (String) -> ()) {
-        DispatchQueue.global(qos: .background).async {
-            sleep(5)
-            completion("Done")
-        }
-    }
-}

@@ -79,7 +79,6 @@
 			children = (
 				B806C4BA29C2195200F1C8C8 /* spyAsyncTest */,
 				B806C4D129C2195300F1C8C8 /* spyAsyncTestTests */,
-				B806C4DB29C2195300F1C8C8 /* spyAsyncTestUITests */,
 				B806C4B929C2195200F1C8C8 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -115,13 +114,6 @@
 				B806C4D229C2195300F1C8C8 /* spyAsyncTestTests.swift */,
 			);
 			path = spyAsyncTestTests;
-			sourceTree = "<group>";
-		};
-		B806C4DB29C2195300F1C8C8 /* spyAsyncTestUITests */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = spyAsyncTestUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

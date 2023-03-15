@@ -15,15 +15,17 @@ class spyAsyncTestTests: XCTestCase {
         let sut = ViewController.make(service: service)
         
         sut.loadViewIfNeeded()
-        XCTAssertEqual(sut.label.text, "Loading...")
+        XCTAssertEqual(sut.label.text, "Loading ...")
         
-        service.completion?("a string")
+        service.completion?("a string") // we stub this
+        /*
+            why it fail cause main.async will call later
+         */
         XCTAssertEqual(sut.label.text, "a string")
     }
 
     // MARK: Helpers
     private class ServiceSpy: Service {
-        // this one we instead. In real, it is from VC
         var completion: ((String) -> Void)?
         
         func load(completion: @escaping (String) -> Void) {
