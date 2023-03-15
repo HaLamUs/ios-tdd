@@ -49,6 +49,9 @@ func guaranteeMainThread(_ work: @escaping () -> ()) {
     if Thread.isMainThread {
         work()
     } else {
-        DispatchQueue.main.async(execute: work)
+//        DispatchQueue.main.async(execute: work)
+        DispatchQueue.main.async {
+            work()
+        }
     }
 }

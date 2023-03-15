@@ -18,9 +18,9 @@ public class ViewController: UIViewController {
         label.text = "Loading ..."
         service.load {
             [weak self] text in
-//            DispatchQueue.main.async {
+            guaranteeMainThread {
                 self?.label.text = text
-//            }
+            }
         }
     }
 }
