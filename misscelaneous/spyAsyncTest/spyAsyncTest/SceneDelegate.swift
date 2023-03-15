@@ -29,7 +29,7 @@ final class ServiceX: Service {
 }
 
 final class QueueDecorator: Service {
-    let decoratee: Service
+    private let decoratee: Service
     
     init(_ decoratee: Service) {
         self.decoratee = decoratee
@@ -37,10 +37,18 @@ final class QueueDecorator: Service {
     
     func load(completion: @escaping (String) -> ()) {
         decoratee.load { text in
-            DispatchQueue.main.async {
+            guaranteeMainThread {
                 completion(text)
             }
         }
     }
     
+}
+
+func guaranteeMainThread(_ work: @escaping () -> ()) {
+    if Thread.isMainThread {
+        work()
+    } else {
+        DispatchQueue.main.async(execute: work)
+    }
 }
