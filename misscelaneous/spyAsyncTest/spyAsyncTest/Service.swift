@@ -7,6 +7,12 @@
 
 import Foundation
 
-class Service {
+public class Service {
     
+    func load(completion: @escaping (String) -> ()) {
+        DispatchQueue.global(qos: .background).async {
+            sleep(5)
+            completion("Done")
+        }
+    }
 }
