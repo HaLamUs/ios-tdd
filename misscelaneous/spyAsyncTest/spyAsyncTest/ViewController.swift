@@ -10,7 +10,7 @@ import UIKit
 public class ViewController: UIViewController {
     
     @IBOutlet weak var label: UILabel!
-    private var service: Service = Service()
+    private var service: Service!
     
     
     public override func viewDidLoad() {
@@ -23,14 +23,11 @@ public class ViewController: UIViewController {
             }
         }
     }
-
-
 }
 
 public extension ViewController {
     static func make(service: Service) -> ViewController {
         let sb = UIStoryboard(name: "Main", bundle: nil)
-        
         return sb.instantiateViewController(identifier: "ViewController") {
             let vc = ViewController(coder: $0)
             vc?.service = service

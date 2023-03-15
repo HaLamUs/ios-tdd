@@ -14,8 +14,6 @@
 		B806C4C529C2195300F1C8C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B806C4C429C2195300F1C8C8 /* Assets.xcassets */; };
 		B806C4C829C2195300F1C8C8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B806C4C629C2195300F1C8C8 /* LaunchScreen.storyboard */; };
 		B806C4D329C2195300F1C8C8 /* spyAsyncTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B806C4D229C2195300F1C8C8 /* spyAsyncTestTests.swift */; };
-		B806C4DD29C2195300F1C8C8 /* spyAsyncTestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B806C4DC29C2195300F1C8C8 /* spyAsyncTestUITests.swift */; };
-		B806C4DF29C2195300F1C8C8 /* spyAsyncTestUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B806C4DE29C2195300F1C8C8 /* spyAsyncTestUITestsLaunchTests.swift */; };
 		B806C4EC29C219DD00F1C8C8 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = B806C4EB29C219DD00F1C8C8 /* Service.swift */; };
 /* End PBXBuildFile section */
 
@@ -48,8 +46,6 @@
 		B806C4CE29C2195300F1C8C8 /* spyAsyncTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = spyAsyncTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B806C4D229C2195300F1C8C8 /* spyAsyncTestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = spyAsyncTestTests.swift; sourceTree = "<group>"; };
 		B806C4D829C2195300F1C8C8 /* spyAsyncTestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = spyAsyncTestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B806C4DC29C2195300F1C8C8 /* spyAsyncTestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = spyAsyncTestUITests.swift; sourceTree = "<group>"; };
-		B806C4DE29C2195300F1C8C8 /* spyAsyncTestUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = spyAsyncTestUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		B806C4EB29C219DD00F1C8C8 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -124,8 +120,6 @@
 		B806C4DB29C2195300F1C8C8 /* spyAsyncTestUITests */ = {
 			isa = PBXGroup;
 			children = (
-				B806C4DC29C2195300F1C8C8 /* spyAsyncTestUITests.swift */,
-				B806C4DE29C2195300F1C8C8 /* spyAsyncTestUITestsLaunchTests.swift */,
 			);
 			path = spyAsyncTestUITests;
 			sourceTree = "<group>";
@@ -280,8 +274,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B806C4DF29C2195300F1C8C8 /* spyAsyncTestUITestsLaunchTests.swift in Sources */,
-				B806C4DD29C2195300F1C8C8 /* spyAsyncTestUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
